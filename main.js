@@ -1,22 +1,33 @@
-var neighbourhoods;
-var slider=[neighbourhoods];
-var userScore=0;
-var personalProfile={
-    Name: name,
-    Age: age,
-    Occupation: occupation,
-    Ethnicity: ethnicity,
-    Family :familySize,
-    HouseholdIncome:income,
-    Residential:residentialStatus
-}
+(function(){
+"use strict"
 
-function personaLProfile(name,age,occupation,ethnicity,familySize,income,residentialStatus){
-    this.name=name;
-    this.name=age;
-    this.occupation=occupation;
-    this.ethnicity=ethnicity;
-    this.familySize=familySize;
-    this.income=income;
-    this.residentialStatus=residentialStatus;
-}
+    var neighborhoods = [];
+
+    function Profile(name, age, occupation, ethnicity, familySize, income, residentStatus){
+        this.name = name;
+        this.name = age;
+        this.occupation = occupation;
+        this.ethnicity = ethnicity;
+        this.familySize = familySize;
+        this.income = income;
+        this.residentStatus = residentStatus;
+    }
+
+    function SliderData(housing, recreation, commercial, food, transportation){
+        this.housing = housing;
+        this.recreation = recreation;
+        this.commercial = commercial;
+        this.food = food;
+        this.transportation = transportation;
+    }
+
+    var user;
+    user.profile = new Profile(name, age, occupation, ethnicity, familySize, income, residentStatus);
+    user.sliderData = new SliderData(housing, recreation, commercial, food, transportation);
+
+    userData.prototype.findNeighborhood = function(){
+        // computes numbers
+        // return a neighbourhood
+    }
+    
+})();
