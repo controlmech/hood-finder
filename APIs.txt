@@ -12,3 +12,6 @@ Licensed Second Hand Shops:https://opendata.arcgis.com/datasets/b1f09efe93a549d3
 Total Population by Ward:https://opendata.arcgis.com/datasets/14b1385cc0b64934b73bbbf8a41dadbd_7.geojson
 Total Gender of Population by Ward:https://opendata.arcgis.com/datasets/3669f2701ec64e36b4fa8b524c0e5075_8.geojson
 Age of Population by Ward: https://opendata.arcgis.com/datasets/7208e686d19d4c13a2e3325de61060da_5.geojson
+
+Bikeways: https://opendata.arcgis.com/datasets/544170b5b1be435592b1aea014265c7d_7.geojson
+Transit service areas: https://opendata.arcgis.com/datasets/8334940386d844edbb13089e7e77af7c_1.geojson
