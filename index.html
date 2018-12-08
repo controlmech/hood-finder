@@ -1,10 +1,55 @@
 <!DOCTYPE html>
     <head>
-        <title id = "mainheader">15 Neighbourhoods</title>
+        <title>15 Neighbourhoods</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-    <script src="main.js"></script>
-        
+        <div id="map">
+        </div>
+        <div id="info">
+        </div>
+
+        <script src="geoxml3.js"></script>
+        <script>
+            var src = "https://opendata.arcgis.com/datasets/f80de78b8abc4d08b3ef46cd4cc7f629_8.kml";
+            var debug;
+            var doc;
+            var kmlLayer;
+            var x = new XMLHttpRequest();
+            x.open("GET", src, true);
+            x.onreadystatechange = function () {
+              if (x.readyState == 4 && x.status == 200)
+              {
+                doc = x.responseXML;
+                for (var i = 0; i < doc.getElementsByTagName("LineStyle").length; i++) {
+                    doc.getElementsByTagName("LineStyle")[i].getElementsByTagName("color")[0].childNodes[0].nodeValue = "ff000000";
+                }
+                for (var i = 0; i < doc.getElementsByTagName("PolyStyle").length; i++) {
+                    doc.getElementsByTagName("PolyStyle")[i].getElementsByTagName("fill")[0].childNodes[0].nodeValue = "1";
+                    doc.getElementsByTagName("PolyStyle")[i].appendChild(doc.createElement("color"));
+                    doc.getElementsByTagName("PolyStyle")[i].getElementsByTagName("color")[0].appendChild(doc.createTextNode("40ffff00"));
+                    doc.getElementsByTagName("PolyStyle")[i].appendChild(doc.createElement("colorMode"));
+                    doc.getElementsByTagName("PolyStyle")[i].getElementsByTagName("colorMode")[0].appendChild(doc.createTextNode("normal"));
+                }
+              }
+            };
+            x.send(null);
+            function initMap() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 12,
+                    center: {
+                        lat: 43.2557,
+                        lng: -79.8711
+                    }
+                });
+
+                var parser = new geoXML3.parser({
+                    map: map
+                });
+                parser.parseKmlString(new XMLSerializer().serializeToString(doc.documentElement), []);
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBv4uCora2zrezirpkTh7hxr_7JEVfgc0&callback=initMap">
+        </script>
     </body>
 </html>
