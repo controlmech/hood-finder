@@ -373,20 +373,6 @@ function compare(a, b){
         return 1;
     return 0;
 }
-
-var user = {
-    sliderData: new SliderData(document.getElementById("housePrice").value,
-                                document.getElementById("houseImportance").value,
-                                document.getElementById("recImportance").value,
-                                document.getElementById("comImportance").value,
-                                document.getElementById("restImportance").value,
-                                document.getElementById("mgImportance").value,
-                                document.getElementById("groceryImportance").value,
-                                document.getElementById("schoolImportance").value,
-                                document.getElementById("libImportance").value,
-                                document.getElementById("gcImportance").value,
-                                document.getElementById("parkImportance").value);
-}
 function compare(a,b){
     if (a.score < b.score)
         return -1;
@@ -395,8 +381,21 @@ function compare(a,b){
     return 0;
 }
 
-var user = {
-    findNeighborhood: function(){
+var user;
+function setup() {
+    user = {
+        sliderData: new SliderData(document.getElementById("housePrice").value,
+                                    document.getElementById("houseImportance").value,
+                                    document.getElementById("recImportance").value,
+                                    document.getElementById("comImportance").value,
+                                    document.getElementById("restImportance").value,
+                                    document.getElementById("mgImportance").value,
+                                    document.getElementById("groceryImportance").value,
+                                    document.getElementById("schoolImportance").value,
+                                    document.getElementById("libImportance").value,
+                                    document.getElementById("gcImportance").value,
+                                    document.getElementById("parkImportance").value),
+      findNeighborhood: function(){
         // Returns array of neighborhoods sorted from best to worst
         var i = 0;
         for (n in neighborhoods){
@@ -428,11 +427,5 @@ var user = {
         }
         neighborhoods.sort(compare);
     }
-};
-
-alert(user);
-
-user.findNeighborhood();
-for (i = (neighborhoods.length) - 1; i >= (neighborhoods.length) - 6; i--){
-  document.write(neighborhoods[i].name, ", score out of 5 : ", neighborhoods[i].score, "<br />");
+    };
 }

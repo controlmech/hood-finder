@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
-    <body>
+    <body onload="setup()">
         <h1 id = "mainheader">HOOD237</h1>
         <div id = "sidebar">
             <div id="pMenuContainer" onclick="togglePMenu()" class = "active">
@@ -39,39 +39,147 @@
         <div id="tabformatting">
 
             <div id = "personalprofile" class = "active">
-                <p>Personal Profile</p><br /><br />
-                <p>Select your age</p><br /><br />
-                <div class="buttons">
-                    <label class="container">Under 18
+                <br/>
+                <div class="dropdown">
+                    <button class="dropbtn">Select Age Range</button>
+                    <div class="dropdown-content">
+                        <a href="#">Under 18</a>
+                        <a href="#">18-30</a>
+                        <a href="#">31-60</a>
+                        <a href="#">Over 60</a>
+
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Employment Status</button>
+                    <div class="dropdown-content">
+                        <a href="#">Unemployed</a>
+                        <a href="#">Student-Unemployed</a>
+                        <a href="#">In Training</a>
+                        <a href="#">Employed</a>
+                        <a href="#">Student-Employed</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Ethnicity</button>
+                    <div class="dropdown-content">
+                        <a href="#">White</a>
+                        <a href="#">Hispanic</a>
+                        <a href="#">Aisan</a>
+                        <a href="#">Black</a>
+                        <a href="#">South-Asian</a>
+                    </div>
+                </div>
+                <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <div class="dropdown">
+                    <button class="dropbtn">Gender</button>
+                    <div class="dropdown-content">
+                        <a href="#">Male</a>
+                        <a href="#">Female</a>
+                        <a href="#">Other</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Family Size</button>
+                    <div class="dropdown-content">
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3-4</a>
+                        <a href="#">Over 4</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Yearly Income</button>
+                    <div class="dropdown-content">
+                        <a href="#">Under $20000</a>
+                        <a href="#">$20000-$50000</a>
+                        <a href="#">$50000-$80000</a>
+                        <a href="#">$80000-$100000</a>
+                        <a href="#">Over $100000</a>
+                    </div>
+                </div>
+                <br /><br /><br /><br /><br /><br />
+                <p>How long are you willing to walk to a desired destination?</p>
+                <br /><br />
+                <form class="buttons">
+                    <label class="container">Less than 5 minutes
                         <input type="radio" checked="checked" name="radio">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="container">18 to 30
+                    <label class="container">5-10 minutes
                         <input type="radio" name="radio">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="container">31 to 50
+                    <label class="container">10-20 minutes
                         <input type="radio" name="radio">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="container">Over 50
+                    <label class="container">More than 20 minutes
                         <input type="radio" name="radio">
                         <span class="checkmark"></span>
                     </label>
-                </div>
+                </form>
 
+                <br /><br /><br /><br />
+                <p>How long are you willing to bicylce to a desired destination?</p>
+                <br /><br />
+                <form class="buttons">
+                    <label class="container">Less than 5 minutes
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">5-10 minutes
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">10-20 minutes
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">More than 20 minutes
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </form>
+
+                <br /><br /><br /><br />
+                <p>How long are you willing to bus to a desired destination?</p>
+                <br /><br />
+                <form class="buttons">
+                    <label class="container">Less than 5 minutes
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">5-10 minutes
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">10-20 minutes
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">More than 20 minutes
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </form>
             </div>
 
             <div id = "housingmenu">
-                <p>housing menu</p>
+                <br />
+                <p>How much are you willing to pay for a house per month?</p><br /><br /><br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="housePrice" onchange="user.sliderData.housePrice = document.getElementById('housePrice')">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="housePrice" onchange="user.sliderData.housePrice = document.getElementById('housePrice').value">
                 </div>
-                <br />
-                <br />
-                <br />
+                <br /><br /><br />
+                <p>How important is it for you to have a house at this price?</p>
+                <br /><br /><br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="houseImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="houseImportance" onchange="user.sliderData.houseImportance = document.getElementById('houseImportance').value">
                 </div>
             </div>
 
@@ -80,7 +188,7 @@
                 <p>How far would you prefer the nearest recreation center to be?</p>
                 <br />
                 <br />
-                <div class="buttons">
+                <form class="buttons">
                     <label class="container">Walking Distance
                         <input type="radio" checked="checked" name="radio" onclick="recreationWalk = 0;">
                         <span class="checkmark"></span>
@@ -97,7 +205,7 @@
                         <input type="radio" name="radio" onclick="recreationWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
-                </div>
+                </form>
                 <br />
                 <br />
                 <br />
@@ -107,7 +215,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="recImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="recImportance" onchange="user.sliderData.recImportance = document.getElementById('recImportance').value">
                 </div>
                 <br />
                 <br />
@@ -115,7 +223,7 @@
                 <p>How far would you prefer the nearest park to be?</p>
                 <br />
                 <br />
-                <div class="buttons">
+                <form class="buttons">
                     <label class="container">Walking Distance
                         <input type="radio" checked="checked" name="radio" onclick="parkWalk = 0;">
                         <span class="checkmark"></span>
@@ -132,7 +240,7 @@
                         <input type="radio" name="radio" onclick="parkWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
-                </div>
+                </form>
                 <br />
                 <br />
                 <br />
@@ -142,7 +250,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="parkImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="parkImportance" onchange="user.sliderData.parkImportance = document.getElementById('parkImportance').value">
                 </div>
                 <br />
                 <br />
@@ -150,7 +258,7 @@
                 <p>How far would you prefer the nearest golf course to be?</p>
                 <br />
                 <br />
-                <div class="buttons">
+                <form class="buttons">
                     <label class="container">Walking Distance
                         <input type="radio" checked="checked" name="radio" onclick="golfWalk = 0;">
                         <span class="checkmark"></span>
@@ -167,7 +275,7 @@
                         <input type="radio" name="radio" onclick="golfWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
-                </div>
+                </form>
                 <br />
                 <br />
                 <br />
@@ -177,7 +285,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="gcImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="gcImportance" onchange="user.sliderData.gcImportance = document.getElementById('gcImportance').value">
                 </div>
             </div>
 
@@ -186,7 +294,7 @@
                 <p>How far would you prefer the nearest shopping mall or plaza to be?</p>
                 <br />
                 <br />
-                <div class="buttons">
+                <form class="buttons">
                     <label class="container">Walking Distance
                         <input type="radio" checked="checked" name="radio" onclick="mallWalk = 0;">
                         <span class="checkmark"></span>
@@ -203,7 +311,7 @@
                         <input type="radio" name="radio" onclick="mallWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
-                </div>
+                </form>
                 <br />
                 <br />
                 <br />
@@ -213,7 +321,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance" onchange="user.sliderData.comImportance = document.getElementById('comImportance').value">
                 </div>
                 <br />
                 <br />
@@ -221,7 +329,7 @@
                 <p>How far would you prefer the nearest museum or a gallery to be?</p>
                 <br />
                 <br />
-                <div class="buttons">
+                <form class="buttons">
                     <label class="container">Walking Distance
                         <input type="radio" checked="checked" name="radio" onclick="museumWalk = 0;">
                         <span class="checkmark"></span>
@@ -238,7 +346,7 @@
                         <input type="radio" name="radio" onclick="museumWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
-                </div>
+                </form>
                 <br />
                 <br />
                 <br />
@@ -248,15 +356,16 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="mgImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="mgImportance" onchange="user.sliderData.mgImportance = document.getElementById('mgImportance').value">
                 </div>
             </div>
+
             <div id = "foodmenu">
                 <br />
                 <p>How far would you prefer the nearest grocery store to be?</p>
                 <br />
                 <br />
-                <div class="buttons">
+                <form class="buttons">
                     <label class="container">Walking Distance
                         <input type="radio" checked="checked" name="radio" onclick="groceryWalk = 0;">
                         <span class="checkmark"></span>
@@ -273,7 +382,7 @@
                         <input type="radio" name="radio" onclick="groceryWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
-                </div>
+                </form>
                 <br />
                 <br />
                 <br />
@@ -283,7 +392,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="groceryImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="groceryImportance" onchange="user.sliderData.groceryImportance = document.getElementById('groceryImportance').value">
                 </div>
                 <br />
                 <br />
@@ -291,7 +400,7 @@
                 <p>How far would you prefer the nearest restaurant to be?</p>
                 <br />
                 <br />
-                <div class="buttons">
+                <form class="buttons">
                     <label class="container">Walking Distance
                         <input type="radio" checked="checked" name="radio" onclick="restWalk = 0;">
                         <span class="checkmark"></span>
@@ -308,7 +417,7 @@
                         <input type="radio" name="radio" onclick="restWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
-                </div>
+                </form>
                 <br />
                 <br />
                 <br />
@@ -318,7 +427,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="restImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="restImportance" onchange="user.sliderData.restImportance = document.getElementById('restImportance').value">
                 </div>
             </div>
 
@@ -327,7 +436,7 @@
                 <p>How far would you prefer a school to be?</p>
                 <br />
                 <br />
-                <div class="buttons">
+                <form class="buttons">
                     <label class="container">Walking Distance
                         <input type="radio" checked="checked" name="radio" onclick="schoolWalk = 0;">
                         <span class="checkmark"></span>
@@ -344,7 +453,7 @@
                         <input type="radio" name="radio" onclick="schoolWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
-                </div>
+                </form>
                 <br />
                 <br />
                 <br />
@@ -354,15 +463,15 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="schoolImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="schoolImportance" onchange="user.sliderData.schoolImportance = document.getElementById('schoolImportance').value">
                 </div>
                 <br />
                 <br />
                 <br />
-                <p>How far would you prefer library to be?</p>
+                <p>How far would you prefer the nearest library to be?</p>
                 <br />
                 <br />
-                <div class="buttons">
+                <form class="buttons">
                     <label class="container">Walking Distance
                         <input type="radio" checked="checked" name="radio" onclick="libraryWalk = 0;">
                         <span class="checkmark"></span>
@@ -379,8 +488,7 @@
                         <input type="radio" name="radio" onclick="libraryWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
-                </div>
-                <br />
+                </form>
                 <br />
                 <br />
                 <br />
@@ -389,7 +497,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="libImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="libImportance" onchange="user.sliderData.libImportance = document.getElementById('libImportance').value">
                 </div>
                 </div>
 
