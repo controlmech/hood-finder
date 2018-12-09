@@ -78,6 +78,7 @@ body {
     background-color: #84DCCF;
     width: 37.2%;
     height: 95%;
+    overflow-y:auto;
     /* transition: all 100ms linear; */
 }
 
