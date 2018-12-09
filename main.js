@@ -337,7 +337,7 @@ function SliderData(housePrice,houseImportance,recDist,recImportance,comDist,com
     this.restImportance = restImportance;
 }
 
-NeighborhoodData (housePrice, recDist, comDist, restDist, entDist, name) {
+function NeighborhoodData(housePrice, recDist, comDist, restDist, entDist, name) {
     this.housePrice = housePrice;
     this.recDist = recDist;
     this.comDist = comDist;
@@ -359,7 +359,7 @@ function setNeighborhoods() {
     for (var i = 1; i <= 237; i++){
         // Construct data for each neighborhood in here
         var housePrice1 = housePricing[convertPlanningUnit(parseInt(doc.getElementsByName("PLANNING_UNIT")[i].childNodes[0].nodeValue))];
-        var neighborhood = NeighborhoodData(housePrice1, 0, 0, 0, 0, 0);
+        var neighborhood = new NeighborhoodData(housePrice1, 0, 0, 0, 0, 0);
         neighborhoods.push(neighborhood);
     }
 }
