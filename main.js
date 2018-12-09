@@ -126,6 +126,10 @@ var recDistances = [];
 var schoolDistances = [];
 var foodDistances = [];
 var mallDistances = [];
+var libraryDistances = [];
+var waterfallDistances = [];
+var museumDistances = [];
+var restaurantDistances = [];
 function processData() {
     var landmarks = doc.getElementsByTagName("Placemark");
 
@@ -165,6 +169,54 @@ function processData() {
         schoolDistances.push(minDistance * 100);
     }
 
+    // Libraries
+    for (var i = 0; i < landmarks.length; i++) {
+        var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
+        var minDistance = 100;
+        for (var k = 0; k < data[4].features.length; k++) {
+            var distance1 = distance(coordinates, data[4].features[k].geometry.coordinates);
+            if (!isNaN(distance1))
+                minDistance = Math.min(minDistance, distance1);
+        }
+        libraryDistances.push(minDistance * 100);
+    }
+
+    // Waterfalls
+    for (var i = 0; i < landmarks.length; i++) {
+        var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
+        var minDistance = 100;
+        for (var k = 0; k < data[5].features.length; k++) {
+            var distance1 = distance(coordinates, data[5].features[k].geometry.coordinates);
+            if (!isNaN(distance1))
+                minDistance = Math.min(minDistance, distance1);
+        }
+        waterfallDistances.push(minDistance * 100);
+    }
+
+    // Museums
+    for (var i = 0; i < landmarks.length; i++) {
+        var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
+        var minDistance = 100;
+        for (var k = 0; k < data[6].features.length; k++) {
+            var distance1 = distance(coordinates, data[6].features[k].geometry.coordinates);
+            if (!isNaN(distance1))
+                minDistance = Math.min(minDistance, distance1);
+        }
+        museumDistances.push(minDistance * 100);
+    }
+
+    // Malls
+    for (var i = 0; i < landmarks.length; i++) {
+        var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
+        var minDistance = 100;
+        for (var k = 0; k < malls.length; k++) {
+            var distance1 = distance(coordinates, [malls[k][1], malls[k][0]]);
+            if (!isNaN(distance1))
+                minDistance = Math.min(minDistance, distance1);
+        }
+        mallDistances.push(minDistance * 100);
+    }
+
     // Food stores
     foodDistances = new Array(landmarks.length).fill(100);
     for (var k = 0; k < data[3].features.length; k++) {
@@ -180,20 +232,27 @@ function processData() {
                     foodDistances[i] = Math.min(foodDistances[i], distance1 * 100);
             }
         }, function(e) {
-          alert(e);
+          //alert(e);
         });
     }
 
-    // malls
-    for (var i = 0; i < landmarks.length; i++) {
-        var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
-        var minDistance = 100;
-        for (var k = 0; k < malls.length; k++) {
-            var distance1 = distance(coordinates, [malls[k][1], malls[k][0]]);
-            if (!isNaN(distance1))
-                minDistance = Math.min(minDistance, distance1);
-        }
-        mallDistances.push(minDistance * 100);
+    // Restaurants
+    restaurantDistances = new Array(landmarks.length).fill(100);
+    for (var k = 0; k < data[7].features.length; k++) {
+        var geocoder = platform.getGeocodingService();
+        geocoder.geocode({
+            searchText: data[7].features[k].properties.BUSINESS_ADDRESS
+        }, function(result) {
+            var latitude = result.Response.View[0].Result[0].Location.DisplayPosition.Latitude, longitude = result.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
+            for (var i = 0; i < landmarks.length; i++) {
+                var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
+                var distance1 = distance(coordinates, [longitude, latitude]);
+                if (!isNaN(distance1))
+                    restaurantDistances[i] = Math.min(foodDistances[i], distance1 * 100);
+            }
+        }, function(e) {
+          //alert(e);
+        });
     }
 }
 
@@ -296,9 +355,9 @@ var user = {
                                          * (6-user.SliderData.restImportance/5);
             neighborhoods[n].entScore = (6 - (Math.abs(user.SliderData.entDist - neighborhoods[n].entDist)))
                                          * (6-user.SliderData.entDist/5);
-            
-            neighborhoods[n].score = (neighborhoods[n].houseScore + neighborhoods[n].recScore + 
-                                     neighborhoods[n].comScore + neighborhoods[n].restScore + 
+
+            neighborhoods[n].score = (neighborhoods[n].houseScore + neighborhoods[n].recScore +
+                                     neighborhoods[n].comScore + neighborhoods[n].restScore +
                                      neighborhoods[n].entScore) /5;
             i++;
         }
