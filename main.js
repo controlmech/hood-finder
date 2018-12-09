@@ -436,7 +436,7 @@ function setup() {
             } else if (walk === 2) {
                 walkRange = (5 / 3.6) * 60 * 20;
             } else {
-                walkRange = 9999;
+                walkRange = (5 / 3.6) * 60 * 30;
             }
             walkRange /= 1000;
 
@@ -448,7 +448,7 @@ function setup() {
             } else if (walk === 2) {
                 bikeRange = (16 / 3.6) * 60 * 20;
             } else {
-                bikeRange = 9999;
+                bikeRange = (16 / 3.6) * 60 * 30;
             }
             bikeRange /= 1000;
 
@@ -460,7 +460,7 @@ function setup() {
             } else if (bus === 2) {
                 busRange = (40 / 3.6) * 60 * 20;
             } else {
-                busRange = 99999;
+                busRange = (40 / 3.6) * 60 * 30;
             }
             busRange /= 1000;
 
