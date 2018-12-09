@@ -360,13 +360,15 @@ var user = {
             // Gets a score from 0-5
             neighborhoods[n].houseScore = (6 - (Math.abs(user.SliderData.housePrice - neighborhoods[n].housePrice)))
                                          * (6-user.SliderData.houseImportance/5);
+            neighborhoods[n].parkScore = (6 - (Math.abs(user.SliderData.parkDist - neighborhoods[n].housePrice)))
+                                         * (6-user.SliderData.houseImportance/5);
             neighborhoods[n].recScore = (6 - (Math.abs(user.SliderData.recDist - neighborhoods[n].recDist)))
                                          * (6-user.SliderData.recImportance/5);
             neighborhoods[n].comScore = (6 - (Math.abs(user.SliderData.comDist - neighborhoods[n].comDist)))
                                          * (6-user.SliderData.comImportance/5);
             neighborhoods[n].restScore = (6 - (Math.abs(user.SliderData.restDist - neighborhoods[n].restDist)))
                                          * (6-user.SliderData.restImportance/5);
-            neighborhoods[n].eduScore = (6 - (Math.abs(user.SliderData.eduDist - neighborhoods[n].eduDist)))
+            neighborhoods[n].Score = (6 - (Math.abs(user.SliderData.eduDist - neighborhoods[n].eduDist)))
                                          * (6-user.SliderData.eduDist/5);
 
             neighborhoods[n].score = (neighborhoods[n].houseScore + neighborhoods[n].recScore +
