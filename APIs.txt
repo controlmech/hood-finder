@@ -9,6 +9,11 @@ Food shops: https://opendata.arcgis.com/datasets/59afd6534e4849ccae93c9ed0049a44
 Licensed Food Establishments: https://opendata.arcgis.com/datasets/85c1b5c9e931470d94f0c9ff5acaa341_2.geojson
 Licensed Kennels and Pet Shops:https://opendata.arcgis.com/datasets/c5a848d9c40f4e83acb1cd73ab9f4508_3.geojson
 Licensed Second Hand Shops:https://opendata.arcgis.com/datasets/b1f09efe93a549d3b3f600d1d93b5305_12.geojson
-Total Population by Ward:https://opendata.arcgis.com/datasets/14b1385cc0b64934b73bbbf8a41dadbd_7.geojson
-Total Gender of Population by Ward:https://opendata.arcgis.com/datasets/3669f2701ec64e36b4fa8b524c0e5075_8.geojson
-Age of Population by Ward: https://opendata.arcgis.com/datasets/7208e686d19d4c13a2e3325de61060da_5.geojson
+Census Profile by Census Tract - 2016:https://opendata.arcgis.com/datasets/cdc66a4b09a147c39eeb747c15d5f9d8_4.geojson
+Bikeways: https://opendata.arcgis.com/datasets/544170b5b1be435592b1aea014265c7d_7.geojson
+Golf Courses:https://opendata.arcgis.com/datasets/7b46f5eabbe0496fb168860ddc22fa35_14.geojson
+Campgrounds: https://opendata.arcgis.com/datasets/90e0023d8f2c481e85037869bfa6cb50_9.geojson
+Parking Lots: https://opendata.arcgis.com/datasets/d56d996d4725499da2a5555aa5e5b651_5.geojson
+Transit Service Areas: https://opendata.arcgis.com/datasets/8334940386d844edbb13089e7e77af7c_1.geojson
+Hospitals:https://opendata.arcgis.com/datasets/a5867b5375544ceb8f06544a5ed349a5_15.geojson
+Educational Institutions:https://opendata.arcgis.com/datasets/cccae6f029334927856da6e20a50561f_19.geojson
