@@ -19,6 +19,8 @@ var links = ['https://opendata.arcgis.com/datasets/4f1b554e743b423f9574e7a3ca814
             'https://opendata.arcgis.com/datasets/715c85740bc84c1b90a3a9f5ae1d2f96_16.geojson',
             ];
 
+var apartmentPricing = [34390.5,34693.5,36284.25,41283.75,35754,31133.25,30981.75,32042.25,31360.5,30072.75,33102.75,31360.5,33633,32042.25,29845.5,30603];
+var housePricing = [12726,14241,19316.25,16210.5,12347.25,13862.25,11514,12271.5,12726,12423,13786.5,12347.25,11589.75,10453.5,11741.25,11741.25];
 var parksData = [];
 var recreationGeo = [];
 var request = [];
@@ -68,48 +70,52 @@ function Profile(name, age, occupation, ethnicity, familySize, income, residentS
     this.residentStatus = residentStatus;
 }
 
-function SliderData(housing, recreation, commercial, food, transport){
-    this.housing = housing;
-    this.recreation = recreation;
-    this.commercial = commercial;
-    this.food = food;
-    this.transport = transport;
+function SliderData(housePrice,houseImportance,recDist,recImportance,comDist,comImportance,entDist,entImportance,
+     restDist,restImportance){
+    this.housePrice = housePrice;
+    this.houseImportance = houseImportance;
+    this.recDist = recDist;
+    this.recImportance = recImportance;
+    this.comDist = comDist;
+    this.comImportance = comImportance;
+    this.entDist = entDist;
+    this.entImportance = entImportance;
+    this.restDist = restDist;
+    this.restImportance = restImportance;
 }
 
-function NeighborhoodData(housing, recreation, commercial, food, transport, name){
-    this.housing = housing;
-    this.recreation = recreation;
-    this.commercial = commercial;
-    this.food = food;
-    this.transport = transport;
+function NeighborhoodData(housePrice, recDist, comDist, restDist, entDist, transDist, name){
+    this.housePrice = housePrice;
+    this.recDist = recDist;
+    this.comDist = comDist;
+    this.restDist = restDist;
+    this.entDist = entDist;
+    this.transDist = transDist;
     this.name = name;
     var score = 0;
 }
 
 // Make every neighborhood
 var neighborhoods = [];
-var housing;
-var recreation;
-var commercial;
-var food;
-var transport;
-var name;
 
 for (i = 0; i < 237; i++){
-    housing = ;
-    recreation = ;
-    commercial = ;
-    food = ;
-    transport = ;
-    name = ;
-
-    var neighborhood = NeighborhoodData(housing,recreation,commercial,food,transport,name);
+    // Construct data for each neighborhood in here
+    var neighborhood = NeighborhoodData(housePrice,recDist,comDist,restDist,transDist,name);
     neighborhoods.push(neighborhood);
 }
 
 // Make objects for user data in the user object 
 user.profile = new Profile(name, age, occupation, ethnicity, familySize, income, residentStatus);
-user.sliderData = new SliderData(housing, recreation, commercial, food, transport);
+user.sliderData = new SliderData(document.getElementById("housePrice").value, 
+                                document.getElementById("houseImportance").value, 
+                                document.getElementById("recDist").value, 
+                                document.getElementById("recImportance").value,
+                                document.getElementById("comDist").value, 
+                                document.getElementById("comImportance").value,
+                                document.getElementById("entDist").value, 
+                                document.getElementById("entImportance").value,
+                                document.getElementById("restDist").value, 
+                                document.getElementById("restImportance").value);
 
 function compare(a,b){
     if (a.score < b.score)
@@ -125,11 +131,16 @@ var user = {
         var i = 0;
         for (n in neighborhoods){
             // Gets a score from 0-5
-            neighborhoods[n].score = (20 - ((Math.abs((user.housing) - (neighborhoods[n].housing))) +
+            neighborhoods[n].score = Math.abs(user.SliderData.housePrice)
+            
+            
+            
+            /*
+            (20 - ((Math.abs((user.housing) - (neighborhoods[n].housing))) +
                         (Math.abs((user.recreation) - (neighborhoods[n].recreation))) +
                         (Math.abs((user.commercial) - (neighborhoods[n].commercial))) +
                         (Math.abs((user.food) - (neighborhoods[n].food))) +
-                        (Math.abs((user.transport) - (neighborhoods[n].transport)))))/4;
+                        (Math.abs((user.transport) - (neighborhoods[n].transport)))))/4;*/
             i++;
         }
         neighborhoods.sort(compare);
