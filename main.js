@@ -337,7 +337,7 @@ function SliderData(housePrice,houseImportance,recDist,recImportance,comDist,com
     this.restImportance = restImportance;
 }
 
-function NeighborhoodData(housePrice, recDist, comDist, restDist, entDist, name){
+NeighborhoodData (housePrice, recDist, comDist, restDist, entDist, name) {
     this.housePrice = housePrice;
     this.recDist = recDist;
     this.comDist = comDist;
