@@ -37,10 +37,31 @@
         </div>
 
         <div id="tabformatting">
+
             <div id = "personalprofile" class = "active">
-                <p>personal profile</p>
+                <p>Personal Profile</p><br /><br />
+                <p>Select your age</p><br /><br />
+                <div class="buttons">
+                    <label class="container">Under 18
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">18 to 30
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">31 to 50
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Over 50
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
             </div>
-        
+
             <div id = "housingmenu">
                 <p>housing menu</p>
                 <div class = "slidecontainer">
@@ -48,10 +69,10 @@
                 </div>
                 <br />
                 <br />
-                <br />  
+                <br />
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="houseImportance">
-                </div>  
+                </div>
             </div>
 
             <div id = "recreationmenu">
@@ -80,11 +101,11 @@
                 <br />
                 <br />
                 <br />
-                <br />  
+                <br />
                 <p>How important is it to have a recreation center at your preferred amount of distance?</p>
                 <br />
                 <br />
-                <br />   
+                <br />
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="recImportance">
                 </div>
@@ -115,18 +136,18 @@
                 <br />
                 <br />
                 <br />
-                <br />  
+                <br />
                 <p>How important is it to have a park at your preferred amount of distance?</p>
                 <br />
                 <br />
-                <br />   
+                <br />
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="parkImportance">
                 </div>
                 <br />
                 <br />
                 <br />
-                <p>How far would you prefer the golf course to be?</p>
+                <p>How far would you prefer the nearest golf course to be?</p>
                 <br />
                 <br />
                 <div class="buttons">
@@ -150,11 +171,11 @@
                 <br />
                 <br />
                 <br />
-                <br />  
+                <br />
                 <p>How important is it to have a golf course at your preferred amount of distance?</p>
                 <br />
                 <br />
-                <br />   
+                <br />
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="gcImportance">
                 </div>
@@ -162,7 +183,7 @@
 
             <div id = "commercialmenu">
                 <br />
-                <p>How far would you prefer a shopping mall or plaza to be?</p>
+                <p>How far would you prefer the nearest shopping mall or plaza to be?</p>
                 <br />
                 <br />
                 <div class="buttons">
@@ -186,18 +207,53 @@
                 <br />
                 <br />
                 <br />
-                <br />  
+                <br />
                 <p>How important is it to have a shopping mall or plaza at your preferred amount of distance?</p>
                 <br />
                 <br />
-                <br />   
+                <br />
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance">
                 </div>
                 <br />
                 <br />
                 <br />
-                <p>How far would you prefer a museum or a gallery to be?</p>
+                <p>How far would you prefer the nearest museum or a gallery to be?</p>
+                <br />
+                <br />
+                <div class="buttons">
+                    <label class="container">Walking Distance
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Biking Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Bussing Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Does not matter
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <p>How important is it to have a museum or gallery at your preferred amount of distance?</p>
+                <br />
+                <br />
+                <br />
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="mgImportance">
+                </div>
+            </div>
+            <div id = "foodmenu">
+                <br />
+                <p>How far would you prefer the nearest grocery store to be?</p>
                 <br />
                 <br />
                 <div class="buttons">
@@ -222,44 +278,45 @@
                 <br />
                 <br />
                 <br />  
-                <p>How important is it to have a museum or gallery at your preferred amount of distance?</p>
+                <p>How important is it to have a grocery store at your preferred amount of distance?</p>
+                <br />
+                <br />
+                <br /> 
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="groceryImportance">
+                </div>
+                <br />
+                <br />
+                <br />
+                <p>How far would you prefer the nearest restaurant to be?</p>
+                <br />
+                <br />
+                <div class="buttons">
+                    <label class="container">Walking Distance
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Biking Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Bussing Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Does not matter
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />  
+                <p>How important is it to have a restaurant at your preferred amount of distance?</p>
                 <br />
                 <br />
                 <br />   
-                <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="mgImportance">
-                </div>
-                <!-- <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="comDist">
-                </div>
-                <br />
-                <br />
-                <br />  
-                <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance">
-                </div>
-                <br />
-                <br />
-                <br />  
-                <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="entDist">
-                </div>
-                <br />
-                <br />
-                <br />  
-                <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="entImportance">
-                </div> -->
-
-            </div>
-            <div id = "foodmenu">
-                <p>food menu</p>
-                <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="restDist">
-                </div>
-                <br />
-                <br />
-                <br />  
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="restImportance">
                 </div>
@@ -334,7 +391,6 @@
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="libImportance">
                 </div>
-                
                 </div>
 
             </div>
@@ -343,6 +399,7 @@
             var src = "https://opendata.arcgis.com/datasets/f80de78b8abc4d08b3ef46cd4cc7f629_8.kml";
             var debug;
             var doc;
+            var map;
             var x = new XMLHttpRequest();
             x.open("GET", src, true);
             x.onreadystatechange = function () {
@@ -359,12 +416,13 @@
                     doc.getElementsByTagName("PolyStyle")[i].appendChild(doc.createElement("colorMode"));
                     doc.getElementsByTagName("PolyStyle")[i].getElementsByTagName("colorMode")[0].appendChild(doc.createTextNode("normal"));
                 }
-                initMap();
+                if (map !== null)
+                    initMap();
               }
             };
             x.send(null);
             function initMap() {
-                var map = new google.maps.Map(document.getElementById('map'), {
+                map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 12,
                     center: {
                         lat: 43.2557,
