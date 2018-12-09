@@ -19,8 +19,7 @@ var links = ['https://opendata.arcgis.com/datasets/4f1b554e743b423f9574e7a3ca814
             'https://opendata.arcgis.com/datasets/715c85740bc84c1b90a3a9f5ae1d2f96_16.geojson',
             ];
 
-var apartmentPricing = [34390.5,34693.5,36284.25,41283.75,35754,31133.25,30981.75,32042.25,31360.5,30072.75,33102.75,31360.5,33633,32042.25,29845.5,30603];
-var housePricing = [12726,14241,19316.25,16210.5,12347.25,13862.25,11514,12271.5,12726,12423,13786.5,12347.25,11589.75,10453.5,11741.25,11741.25];
+var housePricing = [24774.174,21806.94,21110.641,16994.896,19759.48,19240.65,18974.046,20169.58,20851.584,22058.192,18773.304,26295.85,22102.42,20056.894,25224.935];
 var parksData = [];
 var recreationGeo = [];
 var request = [];
@@ -93,6 +92,11 @@ function NeighborhoodData(housePrice, recDist, comDist, restDist, entDist, trans
     this.transDist = transDist;
     this.name = name;
     var score = 0;
+    var houseScore = 0;
+    var recScore = 0;
+    var comScore = 0;
+    var restScore = 0;
+    var transScore = 0;
 }
 
 // Make every neighborhood
@@ -131,10 +135,15 @@ var user = {
         var i = 0;
         for (n in neighborhoods){
             // Gets a score from 0-5
-            neighborhoods[n].score = Math.abs(user.SliderData.housePrice)
+            neighborhoods[n].houseScore = (6 - (Math.abs(user.SliderData.housePrice - neighborhoods[n].housePrice)));
+            neighborhoods[n].recScore = 6 - (Math.abs(user.SliderData.recDist - neighborhoods[n].recDist));
+            neighborhoods[n].comScore = 6 - (Math.abs(user.SliderData.comDist - neighborhoods[n].comDist));
+            neighborhoods[n].restScore = 6 - (Math.abs(user.SliderData.restDist - neighborhoods[n].restDist));
+            neighborhoods[n].transScore = 6 - (Math.abs(user.SliderData.transDist - neighborhoods[n].transDist));
             
-            
-            
+            neighborhoods[n].score = (neighborhoods[n].houseScore + neighborhoods[n].recScore + 
+                                     neighborhoods[n].comScore + neighborhoods[n].restScore + 
+                                     neighborhoods[n].transScore) /5;
             /*
             (20 - ((Math.abs((user.housing) - (neighborhoods[n].housing))) +
                         (Math.abs((user.recreation) - (neighborhoods[n].recreation))) +
