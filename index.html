@@ -277,11 +277,11 @@
                 <br />
                 <br />
                 <br />
-                <br />  
+                <br />
                 <p>How important is it to have a grocery store at your preferred amount of distance?</p>
                 <br />
                 <br />
-                <br /> 
+                <br />
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="groceryImportance">
                 </div>
@@ -312,11 +312,11 @@
                 <br />
                 <br />
                 <br />
-                <br />  
+                <br />
                 <p>How important is it to have a restaurant at your preferred amount of distance?</p>
                 <br />
                 <br />
-                <br />   
+                <br />
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="restImportance">
                 </div>
@@ -348,11 +348,11 @@
                 <br />
                 <br />
                 <br />
-                <br />  
+                <br />
                 <p>How important is it to have a school at your preferred amount of distance?</p>
                 <br />
                 <br />
-                <br />   
+                <br />
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="schoolImportance">
                 </div>
@@ -383,11 +383,11 @@
                 <br />
                 <br />
                 <br />
-                <br />  
+                <br />
                 <p>How important is it to have libary your preferred amount of distance?</p>
                 <br />
                 <br />
-                <br />   
+                <br />
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="libImportance">
                 </div>
@@ -416,8 +416,8 @@
                     doc.getElementsByTagName("PolyStyle")[i].appendChild(doc.createElement("colorMode"));
                     doc.getElementsByTagName("PolyStyle")[i].getElementsByTagName("colorMode")[0].appendChild(doc.createTextNode("normal"));
                 }
-                if (map !== null)
-                    initMap();
+                if (finished === 9)
+                    processData();
               }
             };
             x.send(null);
