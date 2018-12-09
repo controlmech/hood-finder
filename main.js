@@ -374,9 +374,15 @@ function compare(a, b){
         return 1;
     return 0;
 }
+function compare(a,b){
+    if (a.score < b.score)
+        return -1;
+    if (a.score > b.score)
+        return 1;
+    return 0;
+}
 
 var user;
-
 function setup() {
     user = {
         sliderData: new SliderData(document.getElementById("housePrice").value,
@@ -389,11 +395,38 @@ function setup() {
                                     document.getElementById("schoolImportance").value,
                                     document.getElementById("libImportance").value,
                                     document.getElementById("gcImportance").value,
-                                    document.getElementById("parkImportance").value)
+                                    document.getElementById("parkImportance").value),
+      findNeighborhood: function(){
+        // Returns array of neighborhoods sorted from best to worst
+        var i = 0;
+        for (n in neighborhoods){
+            // Gets a score from 0-5
+
+            var score = 0;
+            neighborhoods[n].houseScore = Math.abs(user.sliderData.housePrice - neighborhoods[n].housePrice1) / user.sliderData.houseImportance;
+            neighborhoods[n].parkScore = parkWalk * (6 - user.sliderData.parkImportance / neighborhoods[n].parkDist);
+            neighborhoods[n].schoolScore = schoolWalk * (6 - user.sliderData.schoolImportance / neighborhoods[n].schoolDist);
+            neighborhoods[n].libScore = libraryWalk * (6 - user.sliderData.libImportance / neighborhoods[n].libDist);
+            neighborhoods[n].mgScore = museumWalk * (6 - user.sliderData.mgImportance / neighborhoods[n].mgDist);
+            neighborhoods[n].gcScore = golfWalk * (6 - user.sliderData.gcImportance / neighborhoods[n].gcDist);
+            neighborhoods[n].groceryScore = groceryWalk * (6 - user.sliderData.groceryImportance / neighborhoods[n].groceryDist);
+            neighborhoods[n].recScore = recreationWalk * (6 - user.sliderData.recImportance / neighborhoods[n].recDist);
+            neighborhoods[n].comScore = mallWalk * (6 - user.sliderData.comImportance / neighborhoods[n].comDist);
+            neighborhoods[n].restScore = restWalk * (6 - user.sliderData.restImportance / neighborhoods[n].restDist);
+
+            neighborhoods[n].score = (neighborhoods[n].houseScore +
+                                    neighborhoods[n].parkScore +
+                                    neighborhoods[n].schoolScore +
+                                    neighborhoods[n].libScore +
+                                    neighborhoods[n].mgScore +
+                                    neighborhoods[n].gcScore +
+                                    neighborhoods[n].groceryScore +
+                                    neighborhoods[n].recScore +
+                                    neighborhoods[n].comScore +
+                                    neighborhoods[n].restScore)/10;
+            i++;
+        }
+        neighborhoods.sort(compare);
+    }
     };
 }
-
-// user.findNeighborhood();
-// for(i = (neighborhoods.length) - 1; i >= (neighborhoods.length) - 6; i--){
-//     document.write(neighborhoods[i].name, ", score out of 5 : ", neighborhoods[i].score, "<br />");
-// }
