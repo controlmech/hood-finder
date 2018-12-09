@@ -1,14 +1,15 @@
 <!DOCTYPE html>
     <head>
         <title>15 Neighbourhoods</title>
+        <script src="geoxml3.js"></script>
+        <script src="main.js"></script>
         <script src="transitions.js"></script>
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
     </head>
     <body>
         <h1 id = "mainheader">15 WARDS</h1>
-        
+
         <div id = "sidebar">
             <div id="pMenuContainer" onclick="togglePMenu()">
                 <p>Personal Profile</p>
@@ -37,11 +38,11 @@
         <div id = "personalprofile">
             <p>personal profile</p>
         </div>
-        
+
         <div id = "housingmenu">
             <p>housing menu</p>
         </div>
-        
+
         <div id = "recreationmenu">
             <p>
                 recreation menu
@@ -98,8 +99,6 @@
                 parser.parseKmlString(new XMLSerializer().serializeToString(doc.documentElement), []);
             }
         </script>
-        <script src="main.js"></script>
-        <script src="geoxml3.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBv4uCora2zrezirpkTh7hxr_7JEVfgc0&callback=initMap">
         </script>
     </body>

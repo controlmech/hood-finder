@@ -4,8 +4,15 @@
 }
 
 body {
-    margin: 0;
     font-family: 'Open Sans', sans-serif;
+}
+
+#map {
+    position: fixed;
+    width: 55.8%;
+    left: 44.2%;
+    height: 680px;
+    float: left;
 }
 
 @font-face {
@@ -15,7 +22,7 @@ body {
 
 #mainheader {
     height: 5%;
-    
+
     background-color: #312F2F;
     color: white;
     padding: 20px 20px 0px 20px;
