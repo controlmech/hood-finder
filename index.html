@@ -398,7 +398,6 @@
         <script>
             var src = "https://opendata.arcgis.com/datasets/f80de78b8abc4d08b3ef46cd4cc7f629_8.kml";
             var debug;
-            var doc;
             var map;
             var x = new XMLHttpRequest();
             x.open("GET", src, true);
@@ -416,8 +415,7 @@
                     doc.getElementsByTagName("PolyStyle")[i].appendChild(doc.createElement("colorMode"));
                     doc.getElementsByTagName("PolyStyle")[i].getElementsByTagName("colorMode")[0].appendChild(doc.createTextNode("normal"));
                 }
-                if (finished === 9)
-                    processData();
+                processData();
               }
             };
             x.send(null);
