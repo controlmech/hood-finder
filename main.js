@@ -155,7 +155,6 @@ var schoolDistances = [];
 var foodDistances = [];
 var mallDistances = [];
 var libraryDistances = [];
-var waterfallDistances = [];
 var museumDistances = [];
 var restaurantDistances = [];
 var golfDistances = [];
@@ -208,18 +207,6 @@ function processData() {
                 minDistance = Math.min(minDistance, distance1);
         }
         libraryDistances.push(minDistance * 100);
-    }
-
-    // Waterfalls
-    for (var i = 0; i < landmarks.length; i++) {
-        var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
-        var minDistance = 100;
-        for (var k = 0; k < data[5].features.length; k++) {
-            var distance1 = distance(coordinates, data[5].features[k].geometry.coordinates);
-            if (!isNaN(distance1))
-                minDistance = Math.min(minDistance, distance1);
-        }
-        waterfallDistances.push(minDistance * 100);
     }
 
     // Museums
@@ -278,26 +265,26 @@ function processData() {
     }
 
     // Restaurants
-    // restaurantDistances = new Array(landmarks.length).fill(100);
-    // for (var k = 0; k < data[7].features.length; k++) {
-    //     var geocoder = platform.getGeocodingService();
-    //     geocoder.geocode({
-    //         searchText: data[7].features[k].properties.BUSINESS_ADDRESS
-    //     }, function(result) {
-    //         var latitude = result.Response.View[0].Result[0].Location.DisplayPosition.Latitude, longitude = result.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
-    //         for (var i = 0; i < landmarks.length; i++) {
-    //             var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
-    //             var distance1 = distance(coordinates, [longitude, latitude]);
-    //             if (!isNaN(distance1))
-    //                 restaurantDistances[i] = Math.min(foodDistances[i], distance1 * 100);
-    //         }
-    //         if (k === data[7].features.length) {
-    //             setNeighborhoods();
-    //         }
-    //     }, function(e) {
-    //       //alert(e);
-    //     });
-    // }
+    restaurantDistances = new Array(landmarks.length).fill(100);
+    for (var k = 0; k < data[7].features.length; k++) {
+        var geocoder = platform.getGeocodingService();
+        geocoder.geocode({
+            searchText: data[7].features[k].properties.BUSINESS_ADDRESS
+        }, function(result) {
+            var latitude = result.Response.View[0].Result[0].Location.DisplayPosition.Latitude, longitude = result.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
+            for (var i = 0; i < landmarks.length; i++) {
+                var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
+                var distance1 = distance(coordinates, [longitude, latitude]);
+                if (!isNaN(distance1))
+                    restaurantDistances[i] = Math.min(foodDistances[i], distance1 * 100);
+            }
+            if (k === data[7].features.length) {
+                setNeighborhoods();
+            }
+        }, function(e) {
+          //alert(e);
+        });
+    }
 }
 
 function distance(list, point1) {
