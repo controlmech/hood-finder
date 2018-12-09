@@ -11,15 +11,7 @@ var links = ['https://opendata.arcgis.com/datasets/4f1b554e743b423f9574e7a3ca814
             'https://opendata.arcgis.com/datasets/51c6d946f91249828bc1c594ce1b27d1_16.geojson',
             'https://opendata.arcgis.com/datasets/6728810fb847489985d4b735502205a0_2.geojson',
             'https://opendata.arcgis.com/datasets/85c1b5c9e931470d94f0c9ff5acaa341_2.geojson',
-            'https://opendata.arcgis.com/datasets/c5a848d9c40f4e83acb1cd73ab9f4508_3.geojson',
-            'https://opendata.arcgis.com/datasets/b1f09efe93a549d3b3f600d1d93b5305_12.geojson',
-            'https://opendata.arcgis.com/datasets/14b1385cc0b64934b73bbbf8a41dadbd_7.geojson',
-            'https://opendata.arcgis.com/datasets/3669f2701ec64e36b4fa8b524c0e5075_8.geojson',
-            'https://opendata.arcgis.com/datasets/7208e686d19d4c13a2e3325de61060da_5.geojson',
-            'https://opendata.arcgis.com/datasets/544170b5b1be435592b1aea014265c7d_7.geojson',
-            'https://opendata.arcgis.com/datasets/8334940386d844edbb13089e7e77af7c_1.geojson',
-            'https://opendata.arcgis.com/datasets/a5867b5375544ceb8f06544a5ed349a5_15.geojson',
-            'https://opendata.arcgis.com/datasets/715c85740bc84c1b90a3a9f5ae1d2f96_16.geojson',
+            'https://opendata.arcgis.com/datasets/7b46f5eabbe0496fb168860ddc22fa35_14.geojson'
             ];
 
 function convertPlanningUnit(planningUnit) {
@@ -116,6 +108,18 @@ request[5].onload = function() {
     data[5] = JSON.parse(this.response);
 }
 request[5].send();
+request[6].onload = function() {
+    data[6] = JSON.parse(this.response);
+}
+request[6].send();
+request[7].onload = function() {
+    data[7] = JSON.parse(this.response);
+}
+request[7].send();
+request[8].onload = function() {
+    data[8] = JSON.parse(this.response);
+}
+request[8].send();
 
 var parkDistances = [];
 var recDistances = [];
