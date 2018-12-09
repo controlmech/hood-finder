@@ -76,7 +76,7 @@ function convertPlanningUnit(planningUnit) {
 
 var data = new Array(links.length);
 var request = new Array(links.length);
-var housePricing = [24774.174, 21806.94, 21110.641, 16994.896, 19759.48, 19240.65, 18974.046, 20169.58, 20851.584, 22058.192, 18773.304, 26295.85, 22102.42, 20056.894, 25224.935];
+var housePricing = [4.345582829, 3.069484055, 2.770031332, 1, 2.188946424, 1.965816625, 1.851159999, 2.365315429, 2.658620395, 3.177538347, 1.76482821, 5, 3.196559192, 2.316853303, 4.539438643];
 var malls = [
     [43.233093, -79.922762],
     [43.233980, -79.910667],
@@ -253,8 +253,6 @@ function processData() {
         golfDistances.push(minDistance * 100);
     }
 
-    setNeighborhoods();
-
     // // Food stores
     // foodDistances = new Array(landmarks.length).fill(100);
     // for (var k = 0; k < data[3].features.length; k++) {
@@ -288,13 +286,12 @@ function processData() {
     //             if (!isNaN(distance1))
     //                 restaurantDistances[i] = Math.min(foodDistances[i], distance1 * 100);
     //         }
-    //         if (k === data[7].features.length) {
-    //             setNeighborhoods();
-    //         }
     //     }, function(e) {
     //       //alert(e);
     //     });
     // }
+
+    setNeighborhoods();
 }
 
 function distance(list, point1) {
@@ -335,7 +332,7 @@ function SliderData(housePrice, houseImportance, recImportance, comImportance, r
 }
 
 function NeighborhoodData(housePrice, parkDist, recDist, comDist, restDist, schoolDist, libDist, mgDist, gcDist,
-    groceryDist, name) {
+    groceryDist, name, id) {
     this.housePrice = housePrice;
     this.parkDist = parkDist;
     this.schoolDist = schoolDist;
@@ -347,6 +344,7 @@ function NeighborhoodData(housePrice, parkDist, recDist, comDist, restDist, scho
     this.comDist = comDist;
     this.restDist = restDist;
     this.name = name;
+    this.id = id;
     this.score = 0;
     this.houseScore = 0;
     this.parkScore = 0;
@@ -386,12 +384,14 @@ function normalize(array) {
 }
 
 function setNeighborhoods() {
-    for (var i = 1; i <= 237; i++) {
-        var housePrice1 = housePricing[convertPlanningUnit(parseInt(doc.getElementsByName("PLANNING_UNIT")[i].childNodes[0].nodeValue))];
+    neighborhoods = [];
+    for (var i = 0; i < 237; i++) {
+        var housePrice1 = housePricing[convertPlanningUnit(parseInt(doc.getElementsByName("PLANNING_UNIT")[i + 1].childNodes[0].nodeValue))];
         var neighborhood = new NeighborhoodData(housePrice1, parkDistances[i], recDistances[i], mallDistances[i], restaurantDistances[i],
-            schoolDistances[i], libraryDistances[i], museumDistances[i], golfDistances[i], foodDistances[i], doc.getElementsByName("NEIGHBOURHOOD")[i].childNodes[0].nodeValue);
+            schoolDistances[i], libraryDistances[i], museumDistances[i], golfDistances[i], foodDistances[i], doc.getElementsByName("NEIGHBOURHOOD")[i + 1].childNodes[0].nodeValue, doc.getElementsByName("PLANNING_UNIT")[i + 1].childNodes[0].nodeValue);
         neighborhoods.push(neighborhood);
     }
+    setup();
     user.findNeighborhood();
 }
 
@@ -436,8 +436,9 @@ function setup() {
             } else if (walk === 2) {
                 walkRange = (5 / 3.6) * 60 * 20;
             } else {
-                walkRange = 99999999;
+                walkRange = 9999;
             }
+            walkRange /= 1000;
 
             var bikeRange = 0;
             if (bike === 0) {
@@ -447,8 +448,9 @@ function setup() {
             } else if (walk === 2) {
                 bikeRange = (16 / 3.6) * 60 * 20;
             } else {
-                bikeRange = 99999999;
+                bikeRange = 9999;
             }
+            bikeRange /= 1000;
 
             var busRange = 0;
             if (bus === 0) {
@@ -458,12 +460,13 @@ function setup() {
             } else if (bus === 2) {
                 busRange = (40 / 3.6) * 60 * 20;
             } else {
-                busRange = 99999999;
+                busRange = 99999;
             }
+            busRange /= 1000;
 
             for (var n = 0; n < neighborhoods.length; n++) {
                 // Gets a score from 0-5
-                neighborhoods[n].houseScore = Math.abs(user.sliderData.housePrice - neighborhoods[n].housePrice1) / user.sliderData.houseImportance;
+                neighborhoods[n].houseScore = (5 - Math.abs(user.sliderData.housePrice - neighborhoods[n].housePrice)) / 5 * user.sliderData.houseImportance;
 
                 if (parkWalk === 0) {
                     neighborhoods[n].parkScore = user.sliderData.parkImportance * (walkRange / neighborhoods[n].parkDist);
@@ -487,28 +490,28 @@ function setup() {
                 }
                 if (neighborhoods[n].schoolScore > 5) neighborhoods[n].schoolScore = 5;
 
-            if (libraryWalk === 0){
-                neighborhoods[n].libScore = user.sliderData.libImportance * (walkRange / neighborhoods[n].libDist);
-            }else if (libraryWalk === 1){
-                neighborhoods[n].libScore = user.sliderData.libImportance * (bikeRange / neighborhoods[n].libDist);
-            }else if (libraryWalk === 2){
-                neighborhoods[n].libScore = user.sliderData.libImportance * (busRange / neighborhoods[n].libDist);
-            }else{
-                neighborhoods[n].libScore = 5;
-            }
-            if (neighborhoods[n].libScore > 5) neighborhoods[n].libScore = 5;
+                if (libraryWalk === 0) {
+                    neighborhoods[n].libScore = user.sliderData.libImportance * (walkRange / neighborhoods[n].libDist);
+                } else if (libraryWalk === 1) {
+                    neighborhoods[n].libScore = user.sliderData.libImportance * (bikeRange / neighborhoods[n].libDist);
+                } else if (libraryWalk === 2) {
+                    neighborhoods[n].libScore = user.sliderData.libImportance * (busRange / neighborhoods[n].libDist);
+                } else {
+                    neighborhoods[n].libScore = 5;
+                }
+                if (neighborhoods[n].libScore > 5) neighborhoods[n].libScore = 5;
 
-            if (museumWalk === 0){
-                neighborhoods[n].mgScore = user.sliderData.mgImportance * (walkRange / neighborhoods[n].mgDist);
-            }else if (museumWalk === 1){
-                neighborhoods[n].mgScore = user.sliderData.mgImportance * (bikeRange / neighborhoods[n].mgDist);
-            }else if (museumWalk === 2){
-                neighborhoods[n].mgScore = user.sliderData.mgImportance * (busRange / neighborhoods[n].mgDist);
-            }else{
-                neighborhoods[n].mgScore = 5;
-            }
-            if (neighborhoods[n].mgScore > 5) neighborhoods[n].mgScore = 5;
-              
+                if (museumWalk === 0) {
+                    neighborhoods[n].mgScore = user.sliderData.mgImportance * (walkRange / neighborhoods[n].mgDist);
+                } else if (museumWalk === 1) {
+                    neighborhoods[n].mgScore = user.sliderData.mgImportance * (bikeRange / neighborhoods[n].mgDist);
+                } else if (museumWalk === 2) {
+                    neighborhoods[n].mgScore = user.sliderData.mgImportance * (busRange / neighborhoods[n].mgDist);
+                } else {
+                    neighborhoods[n].mgScore = 5;
+                }
+                if (neighborhoods[n].mgScore > 5) neighborhoods[n].mgScore = 5;
+
                 if (golfWalk === 0) {
                     neighborhoods[n].gcScore = user.sliderData.gcImportance * (walkRange / neighborhoods[n].gcDist);
                 } else if (golfWalk === 1) {
@@ -542,6 +545,17 @@ function setup() {
                 }
                 if (neighborhoods[n].recScore > 5) neighborhoods[n].recScore = 5;
 
+                if (mallWalk === 0) {
+                    neighborhoods[n].comScore = user.sliderData.comImportance * (walkRange / neighborhoods[n].comDist);
+                } else if (mallWalk === 1) {
+                    neighborhoods[n].comScore = user.sliderData.comImportance * (bikeRange / neighborhoods[n].comDist);
+                } else if (mallWalk === 2) {
+                    neighborhoods[n].comScore = user.sliderData.comImportance * (busRange / neighborhoods[n].comDist);
+                } else {
+                    neighborhoods[n].comScore = 5;
+                }
+                if (neighborhoods[n].comScore > 5) neighborhoods[n].comScore = 5;
+
                 if (restWalk === 0) {
                     neighborhoods[n].restScore = user.sliderData.restImportance * (walkRange / neighborhoods[n].restDist);
                 } else if (restWalk === 1) {
@@ -559,12 +573,45 @@ function setup() {
                     neighborhoods[n].libScore +
                     neighborhoods[n].mgScore +
                     neighborhoods[n].gcScore +
-                    neighborhoods[n].groceryScore +
+                    //neighborhoods[n].groceryScore +
                     neighborhoods[n].recScore +
-                    neighborhoods[n].comScore +
-                    neighborhoods[n].restScore) / 10;
+                    neighborhoods[n].comScore
+                    //neighborhoods[n].restScore
+                    ) / 8;
             }
-            neighborhoods.sort(compare);
+            for (var i = 0; i < doc.getElementsByTagName("PolyStyle").length; i++) {
+                doc.getElementsByTagName("PolyStyle")[i].getElementsByTagName("color")[0].childNodes[0].nodeValue = "80" + hslToRgb((neighborhoods[i].score - 1) / 3 * 120, 100, 50);
+            }
+            initMap();
         }
     };
+}
+
+function hslToRgb(h, s, l){
+    h /= 360;
+  s /= 100;
+  l /= 100;
+  let r, g, b;
+  if (s === 0) {
+    r = g = b = l; // achromatic
+  } else {
+    const hue2rgb = (p, q, t) => {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1 / 6) return p + (q - p) * 6 * t;
+      if (t < 1 / 2) return q;
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+      return p;
+    };
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1 / 3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1 / 3);
+  }
+  const toHex = x => {
+    const hex = Math.round(x * 255).toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+  };
+  return `${toHex(b)}${toHex(g)}${toHex(r)}`;
 }
