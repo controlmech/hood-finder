@@ -2,8 +2,10 @@
     <head>
         <title>237 Hoods</title>
         <script src="geoxml3.js"></script>
-        <script src="main.js"></script>
         <script src="transitions.js"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+        <script src="main.js"></script>
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
@@ -37,7 +39,7 @@
         <div id = "personalprofile">
             <p>personal profile</p>
         </div>
-      
+
         <div id = "housingmenu">
             <p>housing menu</p>
             <div class = "slidecontainer">
@@ -45,10 +47,10 @@
             </div>
             <br />
             <br />
-            <br />  
+            <br />
             <div class = "slidecontainer">
                  <input type="range" min="1" max="5" value="3 " class="slider" id="houseImportance">
-            </div>  
+            </div>
         </div>
 
         <div id = "recreationmenu">
@@ -61,10 +63,10 @@
             </div>
             <br />
             <br />
-            <br />  
+            <br />
             <div class = "slidecontainer">
                  <input type="range" min="1" max="5" value="3 " class="slider" id="recImportance">
-            </div>   
+            </div>
         </div>
 
         <div id = "commercialmenu">
@@ -74,19 +76,19 @@
             </div>
             <br />
             <br />
-            <br />  
+            <br />
             <div class = "slidecontainer">
                  <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance">
             </div>
             <br />
             <br />
-            <br />  
+            <br />
             <div class = "slidecontainer">
                 <input type="range" min="1" max="5" value="3 " class="slider" id="entDist">
             </div>
             <br />
             <br />
-            <br />  
+            <br />
             <div class = "slidecontainer">
                  <input type="range" min="1" max="5" value="3 " class="slider" id="entImportance">
             </div>
@@ -100,7 +102,7 @@
             </div>
             <br />
             <br />
-            <br />  
+            <br />
             <div class = "slidecontainer">
                  <input type="range" min="1" max="5" value="3 " class="slider" id="restImportance">
             </div>
@@ -108,14 +110,13 @@
 
         <div id = "transportmenu">
             <p>transport menu</p>
-            
+
             </div>
         </div>
         <script>
             var src = "https://opendata.arcgis.com/datasets/f80de78b8abc4d08b3ef46cd4cc7f629_8.kml";
             var debug;
             var doc;
-            var kmlLayer;
             var x = new XMLHttpRequest();
             x.open("GET", src, true);
             x.onreadystatechange = function () {
@@ -132,6 +133,7 @@
                     doc.getElementsByTagName("PolyStyle")[i].appendChild(doc.createElement("colorMode"));
                     doc.getElementsByTagName("PolyStyle")[i].getElementsByTagName("colorMode")[0].appendChild(doc.createTextNode("normal"));
                 }
+                initMap();
               }
             };
             x.send(null);
@@ -143,7 +145,6 @@
                         lng: -79.8711
                     }
                 });
-
                 var parser = new geoXML3.parser({
                     map: map
                 });
