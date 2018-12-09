@@ -24,9 +24,9 @@ function deactivate(){
         document.getElementById("foodContainer").classList.remove("active");
     }
 
-    if (document.getElementById("transportmenu").classList.contains("active")){
-        document.getElementById("transportmenu").classList.remove("active");
-        document.getElementById("transportContainer").classList.remove("active");
+    if (document.getElementById("educationmenu").classList.contains("active")){
+        document.getElementById("educationmenu").classList.remove("active");
+        document.getElementById("educationContainer").classList.remove("active");
     }
 }
 
@@ -63,6 +63,6 @@ function toggleFMenu(){
 
 function toggleTMenu(){
     deactivate();
-    document.getElementById("transportmenu").classList.add("active");
-    document.getElementById("transportContainer").classList.add("active")
+    document.getElementById("educationmenu").classList.add("active");
+    document.getElementById("educationContainer").classList.add("active")
 }
