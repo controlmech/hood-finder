@@ -430,39 +430,36 @@ function setup() {
             // Returns array of neighborhoods sorted from best to worst
             var walkRange = 0;
             if (walk === 0) {
-                walkRange = (5 / 3.6) * 60 * 5;
+                walkRange = 15 / 36;
             } else if (walk === 1) {
-                walkRange = (5 / 3.6) * 60 * 10;
+                walkRange = 30 / 36;
             } else if (walk === 2) {
-                walkRange = (5 / 3.6) * 60 * 20;
+                walkRange = 60 / 36;
             } else {
-                walkRange = (5 / 3.6) * 60 * 30;
+                walkRange = 2.5;
             }
-            walkRange /= 1000;
 
             var bikeRange = 0;
             if (bike === 0) {
-                bikeRange = (16 / 3.6) * 60 * 5;
+                bikeRange = 4.8 / 3.6;
             } else if (walk === 1) {
-                bikeRange = (16 / 3.6) * 60 * 10;
+                bikeRange = 9.6 / 3.6;
             } else if (walk === 2) {
-                bikeRange = (16 / 3.6) * 60 * 20;
+                bikeRange = 19.2 / 3.6;
             } else {
-                bikeRange = (16 / 3.6) * 60 * 30;
+                bikeRange = 28.8 / 3.6;
             }
-            bikeRange /= 1000;
 
             var busRange = 0;
             if (bus === 0) {
-                busRange = (40 / 3.6) * 60 * 5;
+                busRange = 12 / 3.6;
             } else if (bus === 1) {
-                busRange = (40 / 3.6) * 60 * 10;
+                busRange = 24 / 3.6;
             } else if (bus === 2) {
-                busRange = (40 / 3.6) * 60 * 20;
+                busRange = 48 / 3.6;
             } else {
-                busRange = (40 / 3.6) * 60 * 30;
+                busRange = 72 / 3.6;
             }
-            busRange /= 1000;
 
             for (var n = 0; n < neighborhoods.length; n++) {
                 // Gets a score from 0-5
