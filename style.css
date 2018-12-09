@@ -45,6 +45,8 @@ body {
 #sidebar div{
     height: 15.83%;
     box-sizing: border-box;
+    border-right: 1px solid #312F2F;
+
     /* box-shadow: -4px 1px 5px #312F2F;
     -webkit-box-shadow: 0 */
 }
@@ -58,7 +60,6 @@ body {
     text-decoration: none;
     font-size: 15px;
     color: #818181;
-    border-right: #312F2F;
 }
 
 #pMenuContainer:hover {
@@ -73,8 +74,8 @@ body {
 
 #personalprofile {
     z-index: 1;
-    position: fixed;
-    left: -30.2%;
+    position: absolute;
+    left: 7%;
     background-color: #84DCCF;
     width: 37.2%;
     height: 95%;
@@ -82,8 +83,40 @@ body {
 }
 
 #personalprofile.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2;
+}
+
+.slidecontainer {
+    position: absolute;
+    left: 20%;
+    width: 70%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 25%;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s; 
+}
+
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    border-radius: 100%;
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
 }
 
 #housingContainer:hover {
@@ -98,9 +131,10 @@ body {
 }
 
 #housingmenu {
+    position: absolute;
     z-index: 1;
     position: fixed;
-    left: -30.2%;
+    left: 7%;
     background-color: #98D9C2;
     width: 37.2%;
     height: 95%;
@@ -108,8 +142,7 @@ body {
 }
 
 #housingmenu.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2;
 }
 
 #recreationContainer:hover {
@@ -125,7 +158,7 @@ body {
 #recreationmenu {
     z-index: 1;
     position: fixed;
-    left: -30.2%;
+    left: 7%;
     background-color: #ABEDC6;
     width: 37.2%;
     height: 95%;
@@ -133,8 +166,7 @@ body {
 }
 
 #recreationmenu.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2
 }
 
 #commercialContainer:hover {
@@ -150,7 +182,7 @@ body {
 #commercialmenu {
     z-index: 1;
     position: fixed;
-    left: -30.2%;
+    left: 7%;
     background-color: #B9FFB7;
     width: 37.2%;
     height: 95%;
@@ -158,18 +190,17 @@ body {
 }
 
 #commercialmenu.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2;
 }
 
 #foodContainer:hover {
-    background-color: #98D9C2;    
+    background-color: #D0FFB7;    
     border-right: none;
 
 }
 
 #foodContainer.active {
-    background-color: #98D9C2;
+    background-color: #D0FFB7;
     border-right: none;
 
 }
@@ -177,26 +208,25 @@ body {
 #foodmenu {
     z-index: 1;
     position: fixed;
-    left: -30.2%;
-    background-color: #98D9C2;
+    left: 7%;
+    background-color: #D0FFB7;
     width: 37.2%;
     height: 95%;
     transition: all 30ms linear;
 }
 
 #foodmenu.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2;
 }
 
 #transportContainer:hover {
-    background-color: #98D9C2;
+    background-color: #E4FFAA;
     border-right: none;
 
 }
 
 #transportContainer.active {
-    background-color: #98D9C2;
+    background-color: #E4FFAA;
     border-right: none;
 
 }
@@ -204,14 +234,13 @@ body {
 #transportmenu {
     z-index: 1;
     position: fixed;
-    left: -30.2%;
-    background-color: #98D9C2;
+    left: 7%;
+    background-color: #E4FFAA;
     width: 37.2%;
     height: 95%;
     transition: all 30ms linear;
 }
 
 #transportmenu.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2;
 }
