@@ -154,61 +154,30 @@ request[8].onload = function() {
 }
 request[8].send();
 
-var userCount = 0;
-var avgHousePrice = 0;
-var avgPark = 0;
-var avgRec = 0;
-var avgSchool = 0;
-var avgLibrary = 0;
-var avgGolf = 0;
-var avgMall = 0;
-var avgMuseum = 0;
-var avgRest = 0;
-var avgGrocery = 0;
+// Stuff to save in database
+var averages = {
+    userCount = 0,
+    avgHousePrice = 0,
+    avgPark = 0,
+    avgRec = 0,
+    avgSchool = 0,
+    avgLibrary = 0,
+    avgGolf = 0,
+    avgMall = 0,
+    avgMuseum = 0,
+    avgRest = 0,
+    avgGrocery = 0,
+};
 
 function addUserPreferences(){
-    avgHousePrice *= userCount;
-    avgHousePrice += user.sliderData.housePrice;
-
-    avgPark *= userCount;
-    avgPark += user.sliderData.parkImportance;
-
-    avgRec *= userCount;
-    avgRec += user.sliderData.recImportance;
-
-    avgSchool *= userCount;
-    avgSchool += user.sliderData.schoolImportance;
-
-    avgLibrary *= userCount;
-    avgLibrary += user.sliderData.libImportance;
-
-    avgGolf *= userCount;
-    avgGolf += user.sliderData.gcImportance;
-
-    avgMall *= userCount;
-    avgMall += user.sliderData.comImportance;
-
-    avgMuseum *= userCount;
-    avgMuseum += user.mgImportance;
-
-    avgRest *= userCount;
-    avgRest += user.sliderData.restImportance;
-
-    avgGrocery *= userCount;
-    avgGrocery += user.sliderData.groceryImportance;
-    
-    userCount++;
-
-    avgHousePrice /= userCount;
-    avgPark /= userCount;
-    avgRec /= userCount;
-    avgSchool /= userCount;
-    avgLibrary /= userCount;
-    avgGolf /= userCount;
-    avgMall /= userCount;
-    avgMuseum /= userCount;
-    avgRest /= userCount;
-    avgGrocery /= userCount;
+    for (i = 1; i < 11; i++){
+        averages[i] *= userCount;
+        averages[i] += user.sliderData[i];
+    }
+    averages.userCount++;
+    for (i = 1; i < 11; i++){
+        averages[i] /= userCount;
+    }
 }
 
 var parkDistances = [];
