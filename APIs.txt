@@ -15,5 +15,4 @@ Golf Courses:https://opendata.arcgis.com/datasets/7b46f5eabbe0496fb168860ddc22fa
 Campgrounds: https://opendata.arcgis.com/datasets/90e0023d8f2c481e85037869bfa6cb50_9.geojson
 Transit Service Areas: https://opendata.arcgis.com/datasets/8334940386d844edbb13089e7e77af7c_1.geojson
 Hospitals:https://opendata.arcgis.com/datasets/a5867b5375544ceb8f06544a5ed349a5_15.geojson
-Educational Institutions:https://opendata.arcgis.com/datasets/cccae6f029334927856da6e20a50561f_19.geojson
 House pricing: https://opendata.arcgis.com/datasets/715c85740bc84c1b90a3a9f5ae1d2f96_16.geojson

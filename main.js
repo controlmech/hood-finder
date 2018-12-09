@@ -19,17 +19,73 @@ var links = ['https://opendata.arcgis.com/datasets/4f1b554e743b423f9574e7a3ca814
             'https://opendata.arcgis.com/datasets/544170b5b1be435592b1aea014265c7d_7.geojson',
             'https://opendata.arcgis.com/datasets/8334940386d844edbb13089e7e77af7c_1.geojson',
             'https://opendata.arcgis.com/datasets/a5867b5375544ceb8f06544a5ed349a5_15.geojson',
-            'https://opendata.arcgis.com/datasets/cccae6f029334927856da6e20a50561f_19.geojson',
             'https://opendata.arcgis.com/datasets/715c85740bc84c1b90a3a9f5ae1d2f96_16.geojson',
             ];
 
+function convertPlanningUnit(planningUnit) {
+    if (planningUnit < 2000) {
+        return 13;
+    }
+    if (planningUnit < 2200) {
+        return 1;
+    }
+    if (planningUnit < 2300) {
+        return 13;
+    }
+    if (planningUnit < 4000) {
+        return 12;
+    }
+    if (planningUnit < 5000) {
+        return 11;
+    }
+    if (planningUnit < 5200) {
+        return 5;
+    }
+    if (planningUnit < 5300) {
+        return 10;
+    }
+    if (planningUnit < 6000) {
+        return 9;
+    }
+    if (planningUnit < 6200) {
+        return 1;
+    }
+    if (planningUnit < 6300) {
+        return 4;
+    }
+    if (planningUnit < 6500) {
+        return 5;
+    }
+    if (planningUnit < 6600) {
+        return 4;
+    }
+    if (planningUnit < 6700) {
+        return 3;
+    }
+    if (planningUnit < 6800) {
+        return 2;
+    }
+    if (planningUnit < 7000) {
+        return 1;
+    }
+    if (planningUnit < 7200) {
+        return 14;
+    }
+    if (planningUnit < 7300) {
+        return 7;
+    }
+    if (planningUnit < 7500) {
+        return 6;
+    }
+    if (planningUnit < 7700) {
+        return 7;
+    }
+}
+
 var data = new Array(links.length);
 var request = new Array(links.length);
-var apartmentPricing = [34390.5,34693.5,36284.25,41283.75,35754,31133.25,30981.75,32042.25,31360.5,30072.75,33102.75,31360.5,33633,32042.25,29845.5,30603];
 var housePricing = [12726,14241,19316.25,16210.5,12347.25,13862.25,11514,12271.5,12726,12423,13786.5,12347.25,11589.75,10453.5,11741.25,11741.25];
-var parksData = [];
-var recreationGeo = [];
-var request = [];
+var malls = [[43.233093, -79.922762], [43.233980, -79.910667], [43.205537, -79.894736], [43.230117, -79.879270], [43.236417, -79.877028], [43.237034, -79.876974], [43.217975, -79.861342], [43.251600, -79.851981], [43.258507, -79.870821], [43.258460, -79.869265], [43.252529, -79.810568], [43.230794, -79.765496]];
 
 for (var i = 0; i < links.length; i++) {
     request[i] = new XMLHttpRequest();
@@ -65,6 +121,7 @@ var parkDistances = [];
 var recDistances = [];
 var schoolDistances = [];
 var foodDistances = [];
+var mallDistances = [];
 function processData() {
     var landmarks = doc.getElementsByTagName("Placemark");
 
@@ -122,6 +179,18 @@ function processData() {
           alert(e);
         });
     }
+
+    // malls
+    for (var i = 0; i < landmarks.length; i++) {
+        var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
+        var minDistance = 100;
+        for (var k = 0; k < malls.length; k++) {
+            var distance1 = distance(coordinates, [malls[k][1], malls[k][0]]);
+            if (!isNaN(distance1))
+                minDistance = Math.min(minDistance, distance1);
+        }
+        mallDistances.push(minDistance * 100);
+    }
 }
 
 function distance(list, point1) {
@@ -178,7 +247,7 @@ var neighborhoods = [];
 
 for (i = 0; i < 237; i++){
     // Construct data for each neighborhood in here
-    var neighborhood = NeighborhoodData(housePrice,recDist,comDist,restDist,transDist,name);
+    var neighborhood = NeighborhoodData(0,recDist,comDist,restDist,transDist,name);
     neighborhoods.push(neighborhood);
 }
 
