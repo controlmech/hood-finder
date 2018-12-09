@@ -211,8 +211,7 @@ function distance(list, point1) {
 }
 
 var neighborhoods = []
-function Profile(name, age, occupation, ethnicity, familySize, income, residentStatus){
-    this.name = name;
+function Profile(age, occupation, ethnicity, familySize, income, residentStatus){
     this.name = age;
     this.occupation = occupation;
     this.ethnicity = ethnicity;
@@ -255,7 +254,7 @@ var neighborhoods = [];
 
 for (i = 0; i < 237; i++){
     // Construct data for each neighborhood in here
-    var neighborhood = NeighborhoodData(0,recDist,comDist,restDist,transDist,name);
+    var neighborhood = NeighborhoodData(0,recDist,comDist,restDist,entDist,name);
     neighborhoods.push(neighborhood);
 }
 
