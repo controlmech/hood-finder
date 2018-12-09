@@ -1,18 +1,18 @@
 var platform = new H.service.Platform({
-  'app_id': 'xGmQiK6gdcySbGHGzc1F',
-  'app_code': 'HWnoi_5vJyFMRKc4OjgYLw'
+    'app_id': 'xGmQiK6gdcySbGHGzc1F',
+    'app_code': 'HWnoi_5vJyFMRKc4OjgYLw'
 });
 
 var links = ['https://opendata.arcgis.com/datasets/4f1b554e743b423f9574e7a3ca814cce_6.geojson',
-            'https://opendata.arcgis.com/datasets/272667665de646768db14e9fa1676405_11.geojson',
-            'https://opendata.arcgis.com/datasets/cccae6f029334927856da6e20a50561f_19.geojson',
-            'https://opendata.arcgis.com/datasets/59afd6534e4849ccae93c9ed0049a445_14.geojson',
-            'https://opendata.arcgis.com/datasets/67a54ea25d944cf7b66750ba57da822c_1.geojson',
-            'https://opendata.arcgis.com/datasets/51c6d946f91249828bc1c594ce1b27d1_16.geojson',
-            'https://opendata.arcgis.com/datasets/6728810fb847489985d4b735502205a0_2.geojson',
-            'https://opendata.arcgis.com/datasets/85c1b5c9e931470d94f0c9ff5acaa341_2.geojson',
-            'https://opendata.arcgis.com/datasets/7b46f5eabbe0496fb168860ddc22fa35_14.geojson'
-            ];
+    'https://opendata.arcgis.com/datasets/272667665de646768db14e9fa1676405_11.geojson',
+    'https://opendata.arcgis.com/datasets/cccae6f029334927856da6e20a50561f_19.geojson',
+    'https://opendata.arcgis.com/datasets/59afd6534e4849ccae93c9ed0049a445_14.geojson',
+    'https://opendata.arcgis.com/datasets/67a54ea25d944cf7b66750ba57da822c_1.geojson',
+    'https://opendata.arcgis.com/datasets/51c6d946f91249828bc1c594ce1b27d1_16.geojson',
+    'https://opendata.arcgis.com/datasets/6728810fb847489985d4b735502205a0_2.geojson',
+    'https://opendata.arcgis.com/datasets/85c1b5c9e931470d94f0c9ff5acaa341_2.geojson',
+    'https://opendata.arcgis.com/datasets/7b46f5eabbe0496fb168860ddc22fa35_14.geojson'
+];
 
 function convertPlanningUnit(planningUnit) {
     if (planningUnit < 2000) {
@@ -76,8 +76,21 @@ function convertPlanningUnit(planningUnit) {
 
 var data = new Array(links.length);
 var request = new Array(links.length);
-var housePricing = [24774.174,21806.94,21110.641,16994.896,19759.48,19240.65,18974.046,20169.58,20851.584,22058.192,18773.304,26295.85,22102.42,20056.894,25224.935];
-var malls = [[43.233093, -79.922762], [43.233980, -79.910667], [43.205537, -79.894736], [43.230117, -79.879270], [43.236417, -79.877028], [43.237034, -79.876974], [43.217975, -79.861342], [43.251600, -79.851981], [43.258507, -79.870821], [43.258460, -79.869265], [43.252529, -79.810568], [43.230794, -79.765496]];
+var housePricing = [24774.174, 21806.94, 21110.641, 16994.896, 19759.48, 19240.65, 18974.046, 20169.58, 20851.584, 22058.192, 18773.304, 26295.85, 22102.42, 20056.894, 25224.935];
+var malls = [
+    [43.233093, -79.922762],
+    [43.233980, -79.910667],
+    [43.205537, -79.894736],
+    [43.230117, -79.879270],
+    [43.236417, -79.877028],
+    [43.237034, -79.876974],
+    [43.217975, -79.861342],
+    [43.251600, -79.851981],
+    [43.258507, -79.870821],
+    [43.258460, -79.869265],
+    [43.252529, -79.810568],
+    [43.230794, -79.765496]
+];
 
 for (var i = 0; i < links.length; i++) {
     request[i] = new XMLHttpRequest();
@@ -151,6 +164,7 @@ var waterfallDistances = [];
 var museumDistances = [];
 var restaurantDistances = [];
 var golfDistances = [];
+
 function processData() {
     if (finished < 9 || doc == null)
         return;
@@ -239,6 +253,8 @@ function processData() {
         golfDistances.push(minDistance * 100);
     }
 
+    setNeighborhoods();
+
     // // Food stores
     // foodDistances = new Array(landmarks.length).fill(100);
     // for (var k = 0; k < data[3].features.length; k++) {
@@ -283,7 +299,7 @@ function processData() {
 
 function distance(list, point1) {
     var point2 = [0, 0]; // average points from list
-    for (var i = 0; i < list.length; i++){
+    for (var i = 0; i < list.length; i++) {
         point2[0] += list[i][0];
         point2[1] += list[i][1];
     }
@@ -294,7 +310,7 @@ function distance(list, point1) {
     return distance;
 }
 
-function Profile(age, occupation, ethnicity, familySize, income, residentStatus){
+function Profile(age, occupation, ethnicity, familySize, income, residentStatus) {
     this.name = age;
     this.occupation = occupation;
     this.ethnicity = ethnicity;
@@ -303,8 +319,8 @@ function Profile(age, occupation, ethnicity, familySize, income, residentStatus)
     this.residentStatus = residentStatus;
 }
 
-function SliderData(housePrice,houseImportance,recImportance,comImportance,restImportance,
-    mgImportance,groceryImportance,schoolImportance,libImportance,gcImportance,parkImportance){
+function SliderData(housePrice, houseImportance, recImportance, comImportance, restImportance,
+    mgImportance, groceryImportance, schoolImportance, libImportance, gcImportance, parkImportance) {
     this.housePrice = housePrice;
     this.houseImportance = houseImportance;
     this.recImportance = recImportance;
@@ -319,7 +335,7 @@ function SliderData(housePrice,houseImportance,recImportance,comImportance,restI
 }
 
 function NeighborhoodData(housePrice, parkDist, recDist, comDist, restDist, schoolDist, libDist, mgDist, gcDist,
-    groceryDist,name){
+    groceryDist, name) {
     this.housePrice = housePrice;
     this.parkDist = parkDist;
     this.schoolDist = schoolDist;
@@ -331,27 +347,38 @@ function NeighborhoodData(housePrice, parkDist, recDist, comDist, restDist, scho
     this.comDist = comDist;
     this.restDist = restDist;
     this.name = name;
-    var score = 0;
-    var houseScore = 0;
-    var parkScore = 0;
-    var schoolScore = 0;
-    var libScore = 0;
-    var mgScore = 0;
-    var gcScore = 0;
-    var groceryScore = 0;
-    var recScore = 0;
-    var comScore = 0;
-    var restScore = 0;
+    this.score = 0;
+    this.houseScore = 0;
+    this.parkScore = 0;
+    this.schoolScore = 0;
+    this.libScore = 0;
+    this.mgScore = 0;
+    this.gcScore = 0;
+    this.groceryScore = 0;
+    this.recScore = 0;
+    this.comScore = 0;
+    this.restScore = 0;
 }
 
-var walk = 0, bike = 0, bus = 0;
-var recreationWalk = 0, parkWalk = 0, golfWalk = 0, mallWalk = 0, museumWalk = 0, groceryWalk = 0, restWalk = 0, schoolWalk = 0, libraryWalk = 0;
+var walk = 0,
+    bike = 0,
+    bus = 0;
+var recreationWalk = 0,
+    parkWalk = 0,
+    golfWalk = 0,
+    mallWalk = 0,
+    museumWalk = 0,
+    groceryWalk = 0,
+    restWalk = 0,
+    schoolWalk = 0,
+    libraryWalk = 0;
 
 // Make every neighborhood
 var neighborhoods = [];
 
 function normalize(array) {
-    var min = 10000, max = -10000;
+    var min = 10000,
+        max = -10000;
     for (var i = 0; i < array.length; i++) {
         min = Math.min(min, array[i]);
         max = Math.max(max, array[i]);
@@ -359,22 +386,24 @@ function normalize(array) {
 }
 
 function setNeighborhoods() {
-    for (var i = 1; i <= 237; i++){
+    for (var i = 1; i <= 237; i++) {
         var housePrice1 = housePricing[convertPlanningUnit(parseInt(doc.getElementsByName("PLANNING_UNIT")[i].childNodes[0].nodeValue))];
         var neighborhood = new NeighborhoodData(housePrice1, parkDistances[i], recDistances[i], mallDistances[i], restaurantDistances[i],
-        schoolDistances[i], libraryDistances[i], museumDistances[i], golfDistances[i], foodDistances[i], doc.getElementsByName("NEIGHBOURHOOD")[i].childNodes[0].nodeValue);
-    neighborhoods.push(neighborhood);
+            schoolDistances[i], libraryDistances[i], museumDistances[i], golfDistances[i], foodDistances[i], doc.getElementsByName("NEIGHBOURHOOD")[i].childNodes[0].nodeValue);
+        neighborhoods.push(neighborhood);
     }
+    user.findNeighborhood();
 }
 
-function compare(a, b){
+function compare(a, b) {
     if (a.score < b.score)
         return -1;
     if (a.score > b.score)
         return 1;
     return 0;
 }
-function compare(a,b){
+
+function compare(a, b) {
     if (a.score < b.score)
         return -1;
     if (a.score > b.score)
@@ -383,6 +412,7 @@ function compare(a,b){
 }
 
 var user;
+
 function setup() {
     user = {
         sliderData: new SliderData(document.getElementById("housePrice").value,
@@ -479,19 +509,19 @@ function setup() {
             neighborhoods[n].comScore = mallWalk * (6 - user.sliderData.comImportance / neighborhoods[n].comDist);
             neighborhoods[n].restScore = restWalk * (6 - user.sliderData.restImportance / neighborhoods[n].restDist);
 
-            neighborhoods[n].score = (neighborhoods[n].houseScore +
-                                    neighborhoods[n].parkScore +
-                                    neighborhoods[n].schoolScore +
-                                    neighborhoods[n].libScore +
-                                    neighborhoods[n].mgScore +
-                                    neighborhoods[n].gcScore +
-                                    neighborhoods[n].groceryScore +
-                                    neighborhoods[n].recScore +
-                                    neighborhoods[n].comScore +
-                                    neighborhoods[n].restScore)/10;
-            i++;
+
+                neighborhoods[n].score = (neighborhoods[n].houseScore +
+                    neighborhoods[n].parkScore +
+                    neighborhoods[n].schoolScore +
+                    neighborhoods[n].libScore +
+                    neighborhoods[n].mgScore +
+                    neighborhoods[n].gcScore +
+                    neighborhoods[n].groceryScore +
+                    neighborhoods[n].recScore +
+                    neighborhoods[n].comScore +
+                    neighborhoods[n].restScore) / 10;
+            }
+            neighborhoods.sort(compare);
         }
-        neighborhoods.sort(compare);
-    }
     };
 }
