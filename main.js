@@ -76,7 +76,7 @@ function convertPlanningUnit(planningUnit) {
 
 var data = new Array(links.length);
 var request = new Array(links.length);
-var housePricing = [12726,14241,19316.25,16210.5,12347.25,13862.25,11514,12271.5,12726,12423,13786.5,12347.25,11589.75,10453.5,11741.25,11741.25];
+var housePricing = [24774.174,21806.94,21110.641,16994.896,19759.48,19240.65,18974.046,20169.58,20851.584,22058.192,18773.304,26295.85,22102.42,20056.894,25224.935];
 var malls = [[43.233093, -79.922762], [43.233980, -79.910667], [43.205537, -79.894736], [43.230117, -79.879270], [43.236417, -79.877028], [43.237034, -79.876974], [43.217975, -79.861342], [43.251600, -79.851981], [43.258507, -79.870821], [43.258460, -79.869265], [43.252529, -79.810568], [43.230794, -79.765496]];
 
 for (var i = 0; i < links.length; i++) {
@@ -235,15 +235,19 @@ function SliderData(housePrice,houseImportance,recDist,recImportance,comDist,com
     this.restImportance = restImportance;
 }
 
-function NeighborhoodData(housePrice, recDist, comDist, restDist, entDist, transDist, name){
+function NeighborhoodData(housePrice, recDist, comDist, restDist, entDist, name){
     this.housePrice = housePrice;
     this.recDist = recDist;
     this.comDist = comDist;
     this.restDist = restDist;
     this.entDist = entDist;
-    this.transDist = transDist;
     this.name = name;
     var score = 0;
+    var houseScore = 0;
+    var recScore = 0;
+    var comScore = 0;
+    var restScore = 0;
+    var entScore = 0;
 }
 
 // Make every neighborhood
@@ -282,16 +286,20 @@ var user = {
         var i = 0;
         for (n in neighborhoods){
             // Gets a score from 0-5
-            neighborhoods[n].score = Math.abs(user.SliderData.housePrice)
-
-
-
-            /*
-            (20 - ((Math.abs((user.housing) - (neighborhoods[n].housing))) +
-                        (Math.abs((user.recreation) - (neighborhoods[n].recreation))) +
-                        (Math.abs((user.commercial) - (neighborhoods[n].commercial))) +
-                        (Math.abs((user.food) - (neighborhoods[n].food))) +
-                        (Math.abs((user.transport) - (neighborhoods[n].transport)))))/4;*/
+            neighborhoods[n].houseScore = (6 - (Math.abs(user.SliderData.housePrice - neighborhoods[n].housePrice)))
+                                         * (6-user.SliderData.houseImportance/5);
+            neighborhoods[n].recScore = (6 - (Math.abs(user.SliderData.recDist - neighborhoods[n].recDist)))
+                                         * (6-user.SliderData.recImportance/5);
+            neighborhoods[n].comScore = (6 - (Math.abs(user.SliderData.comDist - neighborhoods[n].comDist)))
+                                         * (6-user.SliderData.comImportance/5);
+            neighborhoods[n].restScore = (6 - (Math.abs(user.SliderData.restDist - neighborhoods[n].restDist)))
+                                         * (6-user.SliderData.restImportance/5);
+            neighborhoods[n].entScore = (6 - (Math.abs(user.SliderData.entDist - neighborhoods[n].entDist)))
+                                         * (6-user.SliderData.entDist/5);
+            
+            neighborhoods[n].score = (neighborhoods[n].houseScore + neighborhoods[n].recScore + 
+                                     neighborhoods[n].comScore + neighborhoods[n].restScore + 
+                                     neighborhoods[n].entScore) /5;
             i++;
         }
         neighborhoods.sort(compare);
