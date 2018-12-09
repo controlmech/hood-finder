@@ -292,33 +292,45 @@ function Profile(age, occupation, ethnicity, familySize, income, residentStatus)
     this.residentStatus = residentStatus;
 }
 
-function SliderData(housePrice,houseImportance,recDist,recImportance,comDist,comImportance,eduDist,eduImportance,
-     restDist,restImportance){
+function SliderData(housePrice,houseImportance,recImportance,comImportance,restImportance,
+    mgImportance,groceryImportance,schoolImportance,libImportance,gcImportance,parkImportance){
     this.housePrice = housePrice;
     this.houseImportance = houseImportance;
-    this.recDist = recDist;
     this.recImportance = recImportance;
-    this.comDist = comDist;
     this.comImportance = comImportance;
-    this.eduDist = eduDist;
-    this.eduImportance = eduImportance;
-    this.restDist = restDist;
     this.restImportance = restImportance;
+    this.mgImportance = mgImportance;
+    this.groceryImportance = groceryImportance;
+    this.schoolImportance = schoolImportance;
+    this.libImportance = libImportance;
+    this.gcImportance = gcImportance;
+    this.parkImportance = parkImportance;
 }
 
-function NeighborhoodData(housePrice, recDist, comDist, restDist, eduDist, name){
+function NeighborhoodData(housePrice, parkDist, recDist, comDist, restDist, schoolDist, libDist, mgDist, gcDist, 
+    groceryDist,name){
     this.housePrice = housePrice;
+    this.parkDist = parkDist;
+    this.schoolDist = schoolDist;
+    this.libDist = libDist;
+    this.mgDist = mgDist;
+    this.gcDist = gcDist;
+    this.groceryDist = groceryDist;
     this.recDist = recDist;
     this.comDist = comDist;
     this.restDist = restDist;
-    this.eduDist = eduDist;
     this.name = name;
     var score = 0;
     var houseScore = 0;
+    var parkScore = 0;
+    var schoolScore = 0;
+    var libScore = 0;
+    var mgScore = 0;
+    var gcScore = 0;
+    var groceryScore = 0;
     var recScore = 0;
     var comScore = 0;
     var restScore = 0;
-    var entScore = 0;
 }
 
 // Make every neighborhood
@@ -344,14 +356,14 @@ for (i = 0; i < 237; i++){
 user.profile = new Profile(name, age, occupation, ethnicity, familySize, income, residentStatus);
 user.sliderData = new SliderData(document.getElementById("housePrice").value,
                                 document.getElementById("houseImportance").value,
-                                document.getElementById("recDist").value,
                                 document.getElementById("recImportance").value,
-                                document.getElementById("comDist").value,
                                 document.getElementById("comImportance").value,
-                                document.getElementById("eduDist").value,
-                                document.getElementById("eduImportance").value,
-                                document.getElementById("restDist").value,
-                                document.getElementById("restImportance").value);
+                                document.getElementById("restImportance").value,
+                                document.getElementById("schoolImportance").value,
+                                document.getElementById("libImportance").value,
+
+                                
+                                );
 
 function compare(a,b){
     if (a.score < b.score)
