@@ -374,21 +374,23 @@ function compare(a, b){
     return 0;
 }
 
-var user = {
-    sliderData: new SliderData(document.getElementById("housePrice").value,
-                                document.getElementById("houseImportance").value,
-                                document.getElementById("recImportance").value,
-                                document.getElementById("comImportance").value,
-                                document.getElementById("restImportance").value,
-                                document.getElementById("mgImportance").value,
-                                document.getElementById("groceryImportance").value,
-                                document.getElementById("schoolImportance").value,
-                                document.getElementById("libImportance").value,
-                                document.getElementById("gcImportance").value,
-                                document.getElementById("parkImportance").value)
-};
+var user;
 
-alert(user);
+function setup() {
+    user = {
+        sliderData: new SliderData(document.getElementById("housePrice").value,
+                                    document.getElementById("houseImportance").value,
+                                    document.getElementById("recImportance").value,
+                                    document.getElementById("comImportance").value,
+                                    document.getElementById("restImportance").value,
+                                    document.getElementById("mgImportance").value,
+                                    document.getElementById("groceryImportance").value,
+                                    document.getElementById("schoolImportance").value,
+                                    document.getElementById("libImportance").value,
+                                    document.getElementById("gcImportance").value,
+                                    document.getElementById("parkImportance").value)
+    };
+}
 
 // user.findNeighborhood();
 // for(i = (neighborhoods.length) - 1; i >= (neighborhoods.length) - 6; i--){
