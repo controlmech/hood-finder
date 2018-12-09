@@ -344,6 +344,7 @@ function NeighborhoodData(housePrice, parkDist, recDist, comDist, restDist, scho
     var restScore = 0;
 }
 
+var walk = 0, bike = 0, bus = 0;
 var recreationWalk = 0, parkWalk = 0, golfWalk = 0, mallWalk = 0, museumWalk = 0, groceryWalk = 0, restWalk = 0, schoolWalk = 0, libraryWalk = 0;
 
 // Make every neighborhood
