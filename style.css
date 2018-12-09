@@ -1,0 +1,190 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@font-face {
+    font-family: "IkarosR";
+    src: url('Ikaros-Regular.otf');
+}
+
+#mainheader {
+    height: 5%;
+    
+    background-color: #312F2F;
+    color: white;
+    padding: 20px 20px 0px 20px;
+    font-family: "IkarosR";
+    letter-spacing: 1px;
+}
+
+#sidebar {
+    position: fixed;
+    float: left;
+    z-index: 2;
+    width: 7%;
+    height: 100%;
+    background-color: white;
+    /* overflow-x: hidden; */
+
+}
+
+#sidebar div{
+    height: 15.83%;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 5px #312F2F;
+}
+
+#sidebar p {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+}
+
+#pMenuContainer:hover {
+    background-color: #84DCCF;
+}
+
+#pMenuContainer.active {
+    background-color: #84DCCF;
+}
+
+#personalprofile {
+    z-index: 1;
+    position: fixed;
+    left: -30.2%;
+    background-color: #84DCCF;
+    width: 37.2%;
+    height: 95%;
+    transition: all 30ms linear;
+}
+
+#personalprofile.active {
+    z-index: 1;
+    left: 7%;
+}
+
+#housingContainer:hover {
+    background-color: #98D9C2;
+}
+
+#housingContainer.active {
+    background-color: #98D9C2;
+}
+
+#housingmenu {
+    z-index: 1;
+    position: fixed;
+    left: -30.2%;
+    background-color: #98D9C2;
+    width: 37.2%;
+    height: 95%;
+    transition: all 30ms linear;
+}
+
+#housingmenu.active {
+    z-index: 1;
+    left: 7%;
+}
+
+#recreationContainer:hover {
+    background-color: #98D9C2;
+}
+
+#recreationContainer.active {
+    background-color: #98D9C2;
+}
+
+#recreationmenu {
+    z-index: 1;
+    position: fixed;
+    left: -30.2%;
+    background-color: #98D9C2;
+    width: 37.2%;
+    height: 95%;
+    transition: all 30ms linear;
+}
+
+#recreationmenu.active {
+    z-index: 1;
+    left: 7%;
+}
+
+#commercialContainer:hover {
+    background-color: #98D9C2;
+}
+
+#commercialContainer.active {
+    background-color: #98D9C2;
+}
+
+#commercialmenu {
+    z-index: 1;
+    position: fixed;
+    left: -30.2%;
+    background-color: #98D9C2;
+    width: 37.2%;
+    height: 95%;
+    transition: all 30ms linear;
+}
+
+#commercialmenu.active {
+    z-index: 1;
+    left: 7%;
+}
+
+#foodContainer:hover {
+    background-color: #98D9C2;
+}
+
+#foodContainer.active {
+    background-color: #98D9C2;
+}
+
+#foodmenu {
+    z-index: 1;
+    position: fixed;
+    left: -30.2%;
+    background-color: #98D9C2;
+    width: 37.2%;
+    height: 95%;
+    transition: all 30ms linear;
+}
+
+#foodmenu.active {
+    z-index: 1;
+    left: 7%;
+}
+
+#transportContainer:hover {
+    background-color: #98D9C2;
+}
+
+#transportContainer.active {
+    background-color: #98D9C2;
+}
+
+#transportmenu {
+    z-index: 1;
+    position: fixed;
+    left: -30.2%;
+    background-color: #98D9C2;
+    width: 37.2%;
+    height: 95%;
+    transition: all 30ms linear;
+}
+
+#transportmenu.active {
+    z-index: 1;
+    left: 7%;
+}
