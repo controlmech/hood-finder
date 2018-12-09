@@ -1016,7 +1016,6 @@ var createPolygon = function(placemark, doc) {
   var p = new google.maps.Polygon(polyOptions);
   p.bounds = bounds;
   if (!parserOptions.suppressInfoWindows) {
-    debug = placemark;
     var infoWindowOptions = geoXML3.combineOptions(parserOptions.infoWindowOptions, {
       content: '<div class="geoxml3_infowindow"><h3>' + placemark.name +
                '</h3><div>' + placemark.description + '</div></div>',

@@ -8,8 +8,6 @@
         </div>
         <div id="info">
         </div>
-
-        <script src="geoxml3.js"></script>
         <script>
             var src = "https://opendata.arcgis.com/datasets/f80de78b8abc4d08b3ef46cd4cc7f629_8.kml";
             var debug;
@@ -49,6 +47,8 @@
                 parser.parseKmlString(new XMLSerializer().serializeToString(doc.documentElement), []);
             }
         </script>
+        <script src="main.js"></script>
+        <script src="geoxml3.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBv4uCora2zrezirpkTh7hxr_7JEVfgc0&callback=initMap">
         </script>
     </body>
