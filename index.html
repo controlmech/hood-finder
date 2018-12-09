@@ -47,7 +47,6 @@
                         <a href="#">18-30</a>
                         <a href="#">31-60</a>
                         <a href="#">Over 60</a>
-
                     </div>
                 </div>
 
@@ -66,13 +65,13 @@
                     <button class="dropbtn">Ethnicity</button>
                     <div class="dropdown-content">
                         <a href="#">White</a>
-                        <a href="#">Hispanic</a>
-                        <a href="#">Aisan</a>
+                        <a href="#">South Asian</a>
+                        <a href="#">East Asian</a>
+                        <a href="#">Arab</a>
                         <a href="#">Black</a>
-                        <a href="#">South-Asian</a>
                     </div>
                 </div>
-                <br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br />
                 <div class="dropdown">
                     <button class="dropbtn">Gender</button>
                     <div class="dropdown-content">
@@ -107,41 +106,41 @@
                 <br /><br />
                 <form class="buttons">
                     <label class="container">Less than 5 minutes
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="walk = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">5-10 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="walk = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">10-20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="walk = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">More than 20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="walk = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </form>
 
                 <br /><br /><br /><br />
-                <p>How long are you willing to bicylce to a desired destination?</p>
+                <p>How long are you willing to bicycle to a desired destination?</p>
                 <br /><br />
                 <form class="buttons">
                     <label class="container">Less than 5 minutes
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="bike = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">5-10 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bike = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">10-20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bike = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">More than 20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bike = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </form>
@@ -151,22 +150,23 @@
                 <br /><br />
                 <form class="buttons">
                     <label class="container">Less than 5 minutes
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="bus = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">5-10 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bus = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">10-20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bus = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">More than 20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bus = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </form>
+                <br /><br /><br /><br /><br />
             </div>
 
             <div id = "housingmenu">
@@ -287,6 +287,7 @@
                 <div class = "slidecontainer">
                     <input type="range" min="1" max="5" value="3 " class="slider" id="gcImportance" onchange="user.sliderData.gcImportance = document.getElementById('gcImportance').value">
                 </div>
+                <br /><br /><br /><br />
             </div>
 
             <div id = "commercialmenu">
