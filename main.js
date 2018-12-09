@@ -245,46 +245,46 @@ function processData() {
         golfDistances.push(minDistance * 100);
     }
 
-    // Food stores
-    foodDistances = new Array(landmarks.length).fill(100);
-    for (var k = 0; k < data[3].features.length; k++) {
-        var geocoder = platform.getGeocodingService();
-        geocoder.geocode({
-            searchText: data[3].features[k].properties.BUSINESS_ADDRESS
-        }, function(result) {
-            var latitude = result.Response.View[0].Result[0].Location.DisplayPosition.Latitude, longitude = result.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
-            for (var i = 0; i < landmarks.length; i++) {
-                var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
-                var distance1 = distance(coordinates, [longitude, latitude]);
-                if (!isNaN(distance1))
-                    foodDistances[i] = Math.min(foodDistances[i], distance1 * 100);
-            }
-        }, function(e) {
-          //alert(e);
-        });
-    }
-
-    // Restaurants
-    restaurantDistances = new Array(landmarks.length).fill(100);
-    for (var k = 0; k < data[7].features.length; k++) {
-        var geocoder = platform.getGeocodingService();
-        geocoder.geocode({
-            searchText: data[7].features[k].properties.BUSINESS_ADDRESS
-        }, function(result) {
-            var latitude = result.Response.View[0].Result[0].Location.DisplayPosition.Latitude, longitude = result.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
-            for (var i = 0; i < landmarks.length; i++) {
-                var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
-                var distance1 = distance(coordinates, [longitude, latitude]);
-                if (!isNaN(distance1))
-                    restaurantDistances[i] = Math.min(foodDistances[i], distance1 * 100);
-            }
-            if (k === data[7].features.length) {
-                setNeighborhoods();
-            }
-        }, function(e) {
-          //alert(e);
-        });
-    }
+    // // Food stores
+    // foodDistances = new Array(landmarks.length).fill(100);
+    // for (var k = 0; k < data[3].features.length; k++) {
+    //     var geocoder = platform.getGeocodingService();
+    //     geocoder.geocode({
+    //         searchText: data[3].features[k].properties.BUSINESS_ADDRESS
+    //     }, function(result) {
+    //         var latitude = result.Response.View[0].Result[0].Location.DisplayPosition.Latitude, longitude = result.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
+    //         for (var i = 0; i < landmarks.length; i++) {
+    //             var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
+    //             var distance1 = distance(coordinates, [longitude, latitude]);
+    //             if (!isNaN(distance1))
+    //                 foodDistances[i] = Math.min(foodDistances[i], distance1 * 100);
+    //         }
+    //     }, function(e) {
+    //       //alert(e);
+    //     });
+    // }
+    //
+    // // Restaurants
+    // restaurantDistances = new Array(landmarks.length).fill(100);
+    // for (var k = 0; k < data[7].features.length; k++) {
+    //     var geocoder = platform.getGeocodingService();
+    //     geocoder.geocode({
+    //         searchText: data[7].features[k].properties.BUSINESS_ADDRESS
+    //     }, function(result) {
+    //         var latitude = result.Response.View[0].Result[0].Location.DisplayPosition.Latitude, longitude = result.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
+    //         for (var i = 0; i < landmarks.length; i++) {
+    //             var coordinates = landmarks[i].getElementsByTagName("coordinates")[0].childNodes[0].nodeValue.split(" ").map(a => a.split(",").map(b => parseFloat(b)));
+    //             var distance1 = distance(coordinates, [longitude, latitude]);
+    //             if (!isNaN(distance1))
+    //                 restaurantDistances[i] = Math.min(foodDistances[i], distance1 * 100);
+    //         }
+    //         if (k === data[7].features.length) {
+    //             setNeighborhoods();
+    //         }
+    //     }, function(e) {
+    //       //alert(e);
+    //     });
+    // }
 }
 
 function distance(list, point1) {
@@ -300,7 +300,6 @@ function distance(list, point1) {
     return distance;
 }
 
-var neighborhoods = []
 function Profile(age, occupation, ethnicity, familySize, income, residentStatus){
     this.name = age;
     this.occupation = occupation;
@@ -325,7 +324,7 @@ function SliderData(housePrice,houseImportance,recImportance,comImportance,restI
     this.parkImportance = parkImportance;
 }
 
-function NeighborhoodData(housePrice, parkDist, recDist, comDist, restDist, schoolDist, libDist, mgDist, gcDist, 
+function NeighborhoodData(housePrice, parkDist, recDist, comDist, restDist, schoolDist, libDist, mgDist, gcDist,
     groceryDist,name){
     this.housePrice = housePrice;
     this.parkDist = parkDist;
@@ -351,6 +350,8 @@ function NeighborhoodData(housePrice, parkDist, recDist, comDist, restDist, scho
     var restScore = 0;
 }
 
+var recreationWalk, parkWalk, golfWalk, mallWalk, museumWalk, groceryWalk, restWalk, schoolWalk, libraryWalk;
+
 // Make every neighborhood
 var neighborhoods = [];
 
@@ -361,31 +362,15 @@ var restDist = [];
 var entDist = [];
 function setNeighborhoods() {
     for (var i = 1; i <= 237; i++){
-        // Construct data for each neighborhood in here
-    recDist[i] = (recDistances[i] + parkDistances[i] + golfDistances[i] + waterfallDistances[i])/4;
-    comDist[i] = (museumDistances[i] + mallDistances[i])/2;
-    restDist[i] = (foodDistances[i] + restaurantDistances[i])/2;
-    entDist[i] = ();
         var housePrice1 = housePricing[convertPlanningUnit(parseInt(doc.getElementsByName("PLANNING_UNIT")[i].childNodes[0].nodeValue))];
         var neighborhood = new NeighborhoodData(housePrice1, 0, 0, 0, 0, 0);
         neighborhoods.push(neighborhood);
     }
 }
 
-// Make objects for user data in the user object
-user.profile = new Profile(name, age, occupation, ethnicity, familySize, income, residentStatus);
-user.sliderData = new SliderData(document.getElementById("housePrice").value,
-                                document.getElementById("houseImportance").value,
-                                document.getElementById("recImportance").value,
-                                document.getElementById("comImportance").value,
-                                document.getElementById("restImportance").value,
-                                document.getElementById("schoolImportance").value,
-                                document.getElementById("libImportance").value,
 
-                                
-                                );
 
-function compare(a,b){
+function compare(a, b){
     if (a.score < b.score)
         return -1;
     if (a.score > b.score)
@@ -394,32 +379,18 @@ function compare(a,b){
 }
 
 var user = {
-    findNeighborhood: function(){
-        // Returns array of neighborhoods sorted from best to worst
-        var i = 0;
-        for (n in neighborhoods){
-            // Gets a score from 0-5
-            neighborhoods[n].houseScore = (6 - (Math.abs(user.SliderData.housePrice - neighborhoods[n].housePrice)))
-                                         * (6-user.SliderData.houseImportance/5);
-            neighborhoods[n].recScore = (6 - (Math.abs(user.SliderData.recDist - neighborhoods[n].recDist)))
-                                         * (6-user.SliderData.recImportance/5);
-            neighborhoods[n].comScore = (6 - (Math.abs(user.SliderData.comDist - neighborhoods[n].comDist)))
-                                         * (6-user.SliderData.comImportance/5);
-            neighborhoods[n].restScore = (6 - (Math.abs(user.SliderData.restDist - neighborhoods[n].restDist)))
-                                         * (6-user.SliderData.restImportance/5);
-            neighborhoods[n].eduScore = (6 - (Math.abs(user.SliderData.eduDist - neighborhoods[n].eduDist)))
-                                         * (6-user.SliderData.eduDist/5);
-
-            neighborhoods[n].score = (neighborhoods[n].houseScore + neighborhoods[n].recScore +
-                                     neighborhoods[n].comScore + neighborhoods[n].restScore +
-                                     neighborhoods[n].eduScore) /5;
-            i++;
-        }
-        neighborhoods.sort(compare);
-    }
+    sliderData: new SliderData(document.getElementById("housePrice").value,
+                                    document.getElementById("houseImportance").value,
+                                    document.getElementById("recImportance").value,
+                                    document.getElementById("comImportance").value,
+                                    document.getElementById("restImportance").value,
+                                    document.getElementById("schoolImportance").value,
+                                    document.getElementById("libImportance").value)
 };
 
-user.findNeighborhood();
-for(i = (neighborhoods.length) - 1; i >= (neighborhoods.length) - 6; i--){
-    document.write(neighborhoods[i].name, ", score out of 5 : ", neighborhoods[i].score, "<br />");
-}
+alert(user);
+
+// user.findNeighborhood();
+// for(i = (neighborhoods.length) - 1; i >= (neighborhoods.length) - 6; i--){
+//     document.write(neighborhoods[i].name, ", score out of 5 : ", neighborhoods[i].score, "<br />");
+// }
