@@ -83,20 +83,19 @@ function SliderData(housePrice,houseImportance,recDist,recImportance,comDist,com
     this.restImportance = restImportance;
 }
 
-function NeighborhoodData(housePrice, recDist, comDist, restDist, entDist, transDist, name){
+function NeighborhoodData(housePrice, recDist, comDist, restDist, entDist, name){
     this.housePrice = housePrice;
     this.recDist = recDist;
     this.comDist = comDist;
     this.restDist = restDist;
     this.entDist = entDist;
-    this.transDist = transDist;
     this.name = name;
     var score = 0;
     var houseScore = 0;
     var recScore = 0;
     var comScore = 0;
     var restScore = 0;
-    var transScore = 0;
+    var entScore = 0;
 }
 
 // Make every neighborhood
@@ -135,21 +134,20 @@ var user = {
         var i = 0;
         for (n in neighborhoods){
             // Gets a score from 0-5
-            neighborhoods[n].houseScore = (6 - (Math.abs(user.SliderData.housePrice - neighborhoods[n].housePrice)));
-            neighborhoods[n].recScore = 6 - (Math.abs(user.SliderData.recDist - neighborhoods[n].recDist));
-            neighborhoods[n].comScore = 6 - (Math.abs(user.SliderData.comDist - neighborhoods[n].comDist));
-            neighborhoods[n].restScore = 6 - (Math.abs(user.SliderData.restDist - neighborhoods[n].restDist));
-            neighborhoods[n].transScore = 6 - (Math.abs(user.SliderData.transDist - neighborhoods[n].transDist));
+            neighborhoods[n].houseScore = (6 - (Math.abs(user.SliderData.housePrice - neighborhoods[n].housePrice)))
+                                         * (6-user.SliderData.houseImportance/5);
+            neighborhoods[n].recScore = (6 - (Math.abs(user.SliderData.recDist - neighborhoods[n].recDist)))
+                                         * (6-user.SliderData.recImportance/5);
+            neighborhoods[n].comScore = (6 - (Math.abs(user.SliderData.comDist - neighborhoods[n].comDist)))
+                                         * (6-user.SliderData.comImportance/5);
+            neighborhoods[n].restScore = (6 - (Math.abs(user.SliderData.restDist - neighborhoods[n].restDist)))
+                                         * (6-user.SliderData.restImportance/5);
+            neighborhoods[n].entScore = (6 - (Math.abs(user.SliderData.entDist - neighborhoods[n].entDist)))
+                                         * (6-user.SliderData.entDist/5);
             
             neighborhoods[n].score = (neighborhoods[n].houseScore + neighborhoods[n].recScore + 
                                      neighborhoods[n].comScore + neighborhoods[n].restScore + 
-                                     neighborhoods[n].transScore) /5;
-            /*
-            (20 - ((Math.abs((user.housing) - (neighborhoods[n].housing))) +
-                        (Math.abs((user.recreation) - (neighborhoods[n].recreation))) +
-                        (Math.abs((user.commercial) - (neighborhoods[n].commercial))) +
-                        (Math.abs((user.food) - (neighborhoods[n].food))) +
-                        (Math.abs((user.transport) - (neighborhoods[n].transport)))))/4;*/
+                                     neighborhoods[n].entScore) /5;
             i++;
         }
         neighborhoods.sort(compare);
