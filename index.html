@@ -65,7 +65,7 @@
             <div id = "housingmenu">
                 <p>housing menu</p>
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="housePrice">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="housePrice" onchange="user.sliderData.housePrice = document.getElementById('housePrice')">
                 </div>
                 <br />
                 <br />
@@ -82,19 +82,19 @@
                 <br />
                 <div class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="recreationWalk = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="recreationWalk = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="recreationWalk = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="recreationWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -117,19 +117,19 @@
                 <br />
                 <div class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="parkWalk = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="parkWalk = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="parkWalk = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="parkWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -152,19 +152,19 @@
                 <br />
                 <div class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="golfWalk = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="golfWalk = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="golfWalk = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="golfWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -188,19 +188,19 @@
                 <br />
                 <div class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="mallWalk = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="mallWalk = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="mallWalk = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="mallWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -223,19 +223,19 @@
                 <br />
                 <div class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="museumWalk = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="museumWalk = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="museumWalk = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="museumWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -258,19 +258,19 @@
                 <br />
                 <div class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="groceryWalk = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="groceryWalk = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="groceryWalk = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="groceryWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -293,19 +293,19 @@
                 <br />
                 <div class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="restWalk = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="restWalk = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="restWalk = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="restWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -329,19 +329,19 @@
                 <br />
                 <div class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="schoolWalk = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="schoolWalk = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="schoolWalk = 2;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="schoolWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -364,19 +364,19 @@
                 <br />
                 <div class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="libraryWalk = 0;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="libraryWalk = 1;">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="libraryWalk = 2">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="libraryWalk = 3;">
                         <span class="checkmark"></span>
                     </label>
                 </div>
