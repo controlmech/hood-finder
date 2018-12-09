@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
-    <body onload="setup()">
+    <body>
         <h1 id = "mainheader">HOOD237</h1>
         <div id = "sidebar">
             <div id="pMenuContainer" onclick="togglePMenu()" class = "active">
@@ -47,7 +47,6 @@
                         <a href="#">18-30</a>
                         <a href="#">31-60</a>
                         <a href="#">Over 60</a>
-
                     </div>
                 </div>
 
@@ -66,13 +65,13 @@
                     <button class="dropbtn">Ethnicity</button>
                     <div class="dropdown-content">
                         <a href="#">White</a>
-                        <a href="#">Hispanic</a>
-                        <a href="#">Aisan</a>
+                        <a href="#">South Asian</a>
+                        <a href="#">East Asian</a>
+                        <a href="#">Arab</a>
                         <a href="#">Black</a>
-                        <a href="#">South-Asian</a>
                     </div>
                 </div>
-                <br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br />
                 <div class="dropdown">
                     <button class="dropbtn">Gender</button>
                     <div class="dropdown-content">
@@ -102,46 +101,46 @@
                         <a href="#">Over $100000</a>
                     </div>
                 </div>
-                <br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br />
                 <p>How long are you willing to walk to a desired destination?</p>
                 <br /><br />
                 <form class="buttons">
                     <label class="container">Less than 5 minutes
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="walk = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">5-10 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="walk = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">10-20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="walk = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">More than 20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="walk = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
 
                 <br /><br /><br /><br />
-                <p>How long are you willing to bicylce to a desired destination?</p>
+                <p>How long are you willing to bicycle to a desired destination?</p>
                 <br /><br />
                 <form class="buttons">
                     <label class="container">Less than 5 minutes
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="bike = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">5-10 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bike = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">10-20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bike = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">More than 20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bike = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
@@ -151,29 +150,30 @@
                 <br /><br />
                 <form class="buttons">
                     <label class="container">Less than 5 minutes
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio" onclick="bus = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">5-10 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bus = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">10-20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bus = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">More than 20 minutes
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" onclick="bus = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
+                <br /><br /><br /><br /><br />
             </div>
 
             <div id = "housingmenu">
                 <br />
                 <p>How much are you willing to pay for a house per month?</p><br /><br /><br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="housePrice" onchange="user.sliderData.housePrice = document.getElementById('housePrice').value">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="housePrice" onchange="user.sliderData.housePrice = document.getElementById('housePrice').value; setNeighborhoods();">
                 </div>
                 <br /><br />
                 <p style="font-size:12px;margin-left:20px;">Not Very Important &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -186,7 +186,7 @@
                 <p>How important is it for you to have a house at this price?</p>
                 <br /><br /><br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="houseImportance" onchange="user.sliderData.houseImportance = document.getElementById('houseImportance').value">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="houseImportance" onchange="user.sliderData.houseImportance = document.getElementById('houseImportance').value; setNeighborhoods();">
                 </div>
                 <br /><br />
                 <p style="font-size:12px;margin-left:20px;">Not Very Important &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -203,19 +203,19 @@
                 <br />
                 <form class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio" onclick="recreationWalk = 0;">
+                        <input type="radio" checked="checked" name="radio" onclick="recreationWalk = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio" onclick="recreationWalk = 1;">
+                        <input type="radio" name="radio" onclick="recreationWalk = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio" onclick="recreationWalk = 2;">
+                        <input type="radio" name="radio" onclick="recreationWalk = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio" onclick="recreationWalk = 3;">
+                        <input type="radio" name="radio" onclick="recreationWalk = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
@@ -228,7 +228,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="recImportance" onchange="user.sliderData.recImportance = document.getElementById('recImportance').value">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="recImportance" onchange="user.sliderData.recImportance = document.getElementById('recImportance').value; setNeighborhoods();">
                 </div>
                 <br /><br />
                 <p style="font-size:12px;margin-left:20px;">Not Very Important &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -243,19 +243,19 @@
                 <br />
                 <form class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio" onclick="parkWalk = 0;">
+                        <input type="radio" checked="checked" name="radio" onclick="parkWalk = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio" onclick="parkWalk = 1;">
+                        <input type="radio" name="radio" onclick="parkWalk = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio" onclick="parkWalk = 2;">
+                        <input type="radio" name="radio" onclick="parkWalk = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio" onclick="parkWalk = 3;">
+                        <input type="radio" name="radio" onclick="parkWalk = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
@@ -268,7 +268,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="parkImportance" onchange="user.sliderData.parkImportance = document.getElementById('parkImportance').value">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="parkImportance" onchange="user.sliderData.parkImportance = document.getElementById('parkImportance').value; setNeighborhoods();">
                 </div>
                 <br /><br />
                 <p style="font-size:12px;margin-left:20px;">Not Very Important &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -283,19 +283,19 @@
                 <br />
                 <form class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio" onclick="golfWalk = 0;">
+                        <input type="radio" checked="checked" name="radio" onclick="golfWalk = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio" onclick="golfWalk = 1;">
+                        <input type="radio" name="radio" onclick="golfWalk = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio" onclick="golfWalk = 2;">
+                        <input type="radio" name="radio" onclick="golfWalk = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio" onclick="golfWalk = 3;">
+                        <input type="radio" name="radio" onclick="golfWalk = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
@@ -306,7 +306,8 @@
                 <p>How important is it to have a golf course at your preferred amount of distance?</p>
                 <br /><br /><br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="gcImportance">
+
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="gcImportance" onchange="user.sliderData.gcImportance = document.getElementById('gcImportance').value; setNeighborhoods();">
                 </div><br /><br />
                 <p style="font-size:12px;margin-left:20px;">Not Very Important &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -323,19 +324,19 @@
                 <br />
                 <form class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio" onclick="mallWalk = 0;">
+                        <input type="radio" checked="checked" name="radio" onclick="mallWalk = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio" onclick="mallWalk = 1;">
+                        <input type="radio" name="radio" onclick="mallWalk = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio" onclick="mallWalk = 2;">
+                        <input type="radio" name="radio" onclick="mallWalk = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio" onclick="mallWalk = 3;">
+                        <input type="radio" name="radio" onclick="mallWalk = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
@@ -348,7 +349,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance" onchange="user.sliderData.comImportance = document.getElementById('comImportance').value">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance" onchange="user.sliderData.comImportance = document.getElementById('comImportance').value; setNeighborhoods();">
                 </div>
                 <br /><br />
                 <p style="font-size:12px;margin-left:20px;">Not Very Important &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -363,19 +364,19 @@
                 <br />
                 <form class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio" onclick="museumWalk = 0;">
+                        <input type="radio" checked="checked" name="radio" onclick="museumWalk = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio" onclick="museumWalk = 1;">
+                        <input type="radio" name="radio" onclick="museumWalk = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio" onclick="museumWalk = 2;">
+                        <input type="radio" name="radio" onclick="museumWalk = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio" onclick="museumWalk = 3;">
+                        <input type="radio" name="radio" onclick="museumWalk = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
@@ -388,7 +389,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="mgImportance" onchange="user.sliderData.mgImportance = document.getElementById('mgImportance').value">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="mgImportance" onchange="user.sliderData.mgImportance = document.getElementById('mgImportance').value; setNeighborhoods();">
                 </div>
                 <br /><br />
                 <p style="font-size:12px;margin-left:20px;">Not Very Important &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -405,19 +406,19 @@
                 <br />
                 <form class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio" onclick="groceryWalk = 0;">
+                        <input type="radio" checked="checked" name="radio" onclick="groceryWalk = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio" onclick="groceryWalk = 1;">
+                        <input type="radio" name="radio" onclick="groceryWalk = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio" onclick="groceryWalk = 2;">
+                        <input type="radio" name="radio" onclick="groceryWalk = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio" onclick="groceryWalk = 3;">
+                        <input type="radio" name="radio" onclick="groceryWalk = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
@@ -430,7 +431,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="groceryImportance" onchange="user.sliderData.groceryImportance = document.getElementById('groceryImportance').value">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="groceryImportance" onchange="user.sliderData.groceryImportance = document.getElementById('groceryImportance').value; setNeighborhoods();">
                 </div>
                 <br /><br />
                 <p style="font-size:12px;margin-left:20px;">Not Very Important &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -445,19 +446,19 @@
                 <br />
                 <form class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio" onclick="restWalk = 0;">
+                        <input type="radio" checked="checked" name="radio" onclick="restWalk = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio" onclick="restWalk = 1;">
+                        <input type="radio" name="radio" onclick="restWalk = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio" onclick="restWalk = 2;">
+                        <input type="radio" name="radio" onclick="restWalk = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio" onclick="restWalk = 3;">
+                        <input type="radio" name="radio" onclick="restWalk = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
@@ -470,7 +471,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="restImportance" onchange="user.sliderData.restImportance = document.getElementById('restImportance').value">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="restImportance" onchange="user.sliderData.restImportance = document.getElementById('restImportance').value; setNeighborhoods();">
                 </div>
                 <br /><br />
                 <p style="font-size:12px;margin-left:20px;">Not Very Important &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -488,19 +489,19 @@
                 <br />
                 <form class="buttons">
                     <label class="container">Walking Distance
-                        <input type="radio" checked="checked" name="radio" onclick="schoolWalk = 0;">
+                        <input type="radio" checked="checked" name="radio" onclick="schoolWalk = 0; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Biking Distance
-                        <input type="radio" name="radio" onclick="schoolWalk = 1;">
+                        <input type="radio" name="radio" onclick="schoolWalk = 1; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Bussing Distance
-                        <input type="radio" name="radio" onclick="schoolWalk = 2;">
+                        <input type="radio" name="radio" onclick="schoolWalk = 2; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">Does not matter
-                        <input type="radio" name="radio" onclick="schoolWalk = 3;">
+                        <input type="radio" name="radio" onclick="schoolWalk = 3; setNeighborhoods();">
                         <span class="checkmark"></span>
                     </label>
                 </form>
@@ -513,7 +514,7 @@
                 <br />
                 <br />
                 <div class = "slidecontainer">
-                    <input type="range" min="1" max="5" value="3 " class="slider" id="schoolImportance">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="schoolImportance" onchange="user.sliderData.schoolImportance = document.getElementById('schoolImportance').value; setNeighborhoods();">
                     </div>
                     <br /><br />
                     <p style="font-size:12px;margin-left:20px;">Not Very Important &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -523,24 +524,24 @@
                         Very Important</p>
                     <br />
                     <br />
-                    <p>How far would you prefer library to be?</p>
+                    <p>How far would you prefer the nearest library to be?</p>
                     <br />
                     <br />
                     <form class="buttons">
                         <label class="container">Walking Distance
-                            <input type="radio" checked="checked" name="radio">
+                            <input type="radio" checked="checked" name="radio" onclick="libraryWalk = 0; setNeighborhoods();">
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">Biking Distance
-                            <input type="radio" name="radio">
+                            <input type="radio" name="radio" onclick="libraryWalk = 1; setNeighborhoods();">
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">Bussing Distance
-                            <input type="radio" name="radio">
+                            <input type="radio" name="radio" onclick="libraryWalk = 2; setNeighborhoods();">
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">Does not matter
-                            <input type="radio" name="radio">
+                            <input type="radio" name="radio" onclick="libraryWalk = 3; setNeighborhoods();">
                             <span class="checkmark"></span>
                         </label>
                     </form>
@@ -548,7 +549,7 @@
                     <br />
                     <br />
                     <br />  
-                    <p>How important is it to have libary your preferred amount of distance?</p>
+                    <p>How important is it to have library at your preferred distance?</p>
                     <br />
                     <br />
                     <br />   
@@ -569,6 +570,7 @@
             var src = "https://opendata.arcgis.com/datasets/f80de78b8abc4d08b3ef46cd4cc7f629_8.kml";
             var debug;
             var map;
+            var parser;
             var x = new XMLHttpRequest();
             x.open("GET", src, true);
             x.onreadystatechange = function () {
@@ -597,7 +599,7 @@
                         lng: -79.8711
                     }
                 });
-                var parser = new geoXML3.parser({
+                parser = new geoXML3.parser({
                     map: map
                 });
                 parser.parseKmlString(new XMLSerializer().serializeToString(doc.documentElement), []);
