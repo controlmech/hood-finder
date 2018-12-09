@@ -459,19 +459,31 @@ function setup() {
             }
             if (neighborhoods[n].schoolScore > 5) neighborhoods[n].schoolScore = 5;
 
+            if (libraryWalk === 0){
+                neighborhoods[n].libScore = user.sliderData.libImportance * (walkRange / neighborhoods[n].libDist);
+            }else if (libraryWalk === 1){
+                neighborhoods[n].libScore = user.sliderData.libImportance * (bikeRange / neighborhoods[n].libDist);
+            }else if (libraryWalk === 2){
+                neighborhoods[n].libScore = user.sliderData.libImportance * (busRange / neighborhoods[n].libDist);
+            }else{
+                neighborhoods[n].libScore = 5;
+            }
+            if (neighborhoods[n].libScore > 5) neighborhoods[n].libScore = 5;
+
+            if (museumWalk === 0){
+                neighborhoods[n].mgScore = user.sliderData.mgImportance * (walkRange / neighborhoods[n].mgDist);
+            }else if (museumWalk === 1){
+                neighborhoods[n].mgScore = user.sliderData.mgImportance * (bikeRange / neighborhoods[n].mgDist);
+            }else if (museumWalk === 2){
+                neighborhoods[n].mgScore = user.sliderData.mgImportance * (busRange / neighborhoods[n].mgDist);
+            }else{
+                neighborhoods[n].mgScore = 5;
+            }
+            if (neighborhoods[n].mgScore > 5) neighborhoods[n].mgScore = 5;
 
 
 
 
-
-
-
-
-
-
-
-            neighborhoods[n].schoolScore = schoolWalk * (6 - user.sliderData.schoolImportance / neighborhoods[n].schoolDist);
-            neighborhoods[n].libScore = libraryWalk * (6 - user.sliderData.libImportance / neighborhoods[n].libDist);
             neighborhoods[n].mgScore = museumWalk * (6 - user.sliderData.mgImportance / neighborhoods[n].mgDist);
             neighborhoods[n].gcScore = golfWalk * (6 - user.sliderData.gcImportance / neighborhoods[n].gcDist);
             neighborhoods[n].groceryScore = groceryWalk * (6 - user.sliderData.groceryImportance / neighborhoods[n].groceryDist);
