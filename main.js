@@ -416,78 +416,76 @@ var user;
 function setup() {
     user = {
         sliderData: new SliderData(document.getElementById("housePrice").value,
-                                    document.getElementById("houseImportance").value,
-                                    document.getElementById("recImportance").value,
-                                    document.getElementById("comImportance").value,
-                                    document.getElementById("restImportance").value,
-                                    document.getElementById("mgImportance").value,
-                                    document.getElementById("groceryImportance").value,
-                                    document.getElementById("schoolImportance").value,
-                                    document.getElementById("libImportance").value,
-                                    document.getElementById("gcImportance").value,
-                                    document.getElementById("parkImportance").value),
-      findNeighborhood: function(){
-        // Returns array of neighborhoods sorted from best to worst
-        var i = 0;
-        
-        var walkRange = 0;
-        if (walk === 0){
-            walkRange = (5 / 3.6) * 60 * 5;
-        }else if (walk === 1){
-            walkRange = (5 / 3.6) * 60 * 10;
-        }else if (walk === 2){
-            walkRange = (5 / 3.6) * 60 * 20;
-        }else{
-            walkRange = 99999999;
-        }
-
-        var bikeRange = 0;
-        if (bike === 0){
-            bikeRange = (16 / 3.6) * 60 * 5;
-        }else if (walk === 1){
-            bikeRange = (16 / 3.6) * 60 * 10;
-        }else if (walk === 2){
-            bikeRange = (16 / 3.6) * 60 * 20;
-        }else{
-            bikeRange = 99999999;
-        }
-
-        var busRange = 0;
-        if (bus === 0){
-            busRange = (40 / 3.6) * 60 * 5;
-        }else if (bus === 1){
-            busRange = (40 / 3.6) * 60 * 10;
-        }else if (bus === 2){
-            busRange = (40 / 3.6) * 60 * 20;
-        }else{
-            busRange = 99999999;
-        }
-
-        for (n in neighborhoods){
-            // Gets a score from 0-5
-            neighborhoods[n].houseScore = Math.abs(user.sliderData.housePrice - neighborhoods[n].housePrice1) / user.sliderData.houseImportance;
-
-            if (parkWalk === 0){
-                neighborhoods[n].parkScore = user.sliderData.parkImportance * (walkRange / neighborhoods[n].parkDist);
-            }else if (parkWalk === 1){
-                neighborhoods[n].parkScore = user.sliderData.parkImportance * (bikeRange / neighborhoods[n].parkDist);
-            }else if (parkWalk === 2){
-                neighborhoods[n].parkScore = user.sliderData.parkImportance * (busRange / neighborhoods[n].parkDist);
-            }else{
-                neighborhoods[n].parkScore = 5;
+            document.getElementById("houseImportance").value,
+            document.getElementById("recImportance").value,
+            document.getElementById("comImportance").value,
+            document.getElementById("restImportance").value,
+            document.getElementById("mgImportance").value,
+            document.getElementById("groceryImportance").value,
+            document.getElementById("schoolImportance").value,
+            document.getElementById("libImportance").value,
+            document.getElementById("gcImportance").value,
+            document.getElementById("parkImportance").value),
+        findNeighborhood: function() {
+            // Returns array of neighborhoods sorted from best to worst
+            var walkRange = 0;
+            if (walk === 0) {
+                walkRange = (5 / 3.6) * 60 * 5;
+            } else if (walk === 1) {
+                walkRange = (5 / 3.6) * 60 * 10;
+            } else if (walk === 2) {
+                walkRange = (5 / 3.6) * 60 * 20;
+            } else {
+                walkRange = 99999999;
             }
-            if (neighborhoods[n].parkScore > 5) neighborhoods[n].parkScore = 5;
 
-            if (schoolWalk === 0){
-                neighborhoods[n].schoolScore = user.sliderData.schoolImportance * (walkRange / neighborhoods[n].schoolDist);
-            }else if (schoolWalk === 1){
-                neighborhoods[n].schoolScore = user.sliderData.schoolImportance * (bikeRange / neighborhoods[n].schoolDist);
-            }else if (schoolWalk === 2){
-                neighborhoods[n].schoolScore = user.sliderData.schoolImportance * (busRange / neighborhoods[n].schoolDist);
-            }else{
-                neighborhoods[n].schoolScore = 5;
+            var bikeRange = 0;
+            if (bike === 0) {
+                bikeRange = (16 / 3.6) * 60 * 5;
+            } else if (walk === 1) {
+                bikeRange = (16 / 3.6) * 60 * 10;
+            } else if (walk === 2) {
+                bikeRange = (16 / 3.6) * 60 * 20;
+            } else {
+                bikeRange = 99999999;
             }
-            if (neighborhoods[n].schoolScore > 5) neighborhoods[n].schoolScore = 5;
+
+            var busRange = 0;
+            if (bus === 0) {
+                busRange = (40 / 3.6) * 60 * 5;
+            } else if (bus === 1) {
+                busRange = (40 / 3.6) * 60 * 10;
+            } else if (bus === 2) {
+                busRange = (40 / 3.6) * 60 * 20;
+            } else {
+                busRange = 99999999;
+            }
+
+            for (var n = 0; n < neighborhoods.length; n++) {
+                // Gets a score from 0-5
+                neighborhoods[n].houseScore = Math.abs(user.sliderData.housePrice - neighborhoods[n].housePrice1) / user.sliderData.houseImportance;
+
+                if (parkWalk === 0) {
+                    neighborhoods[n].parkScore = user.sliderData.parkImportance * (walkRange / neighborhoods[n].parkDist);
+                } else if (parkWalk === 1) {
+                    neighborhoods[n].parkScore = user.sliderData.parkImportance * (bikeRange / neighborhoods[n].parkDist);
+                } else if (parkWalk === 2) {
+                    neighborhoods[n].parkScore = user.sliderData.parkImportance * (busRange / neighborhoods[n].parkDist);
+                } else {
+                    neighborhoods[n].parkScore = 5;
+                }
+                if (neighborhoods[n].parkScore > 5) neighborhoods[n].parkScore = 5;
+
+                if (schoolWalk === 0) {
+                    neighborhoods[n].schoolScore = user.sliderData.schoolImportance * (walkRange / neighborhoods[n].schoolDist);
+                } else if (schoolWalk === 1) {
+                    neighborhoods[n].schoolScore = user.sliderData.schoolImportance * (bikeRange / neighborhoods[n].schoolDist);
+                } else if (schoolWalk === 2) {
+                    neighborhoods[n].schoolScore = user.sliderData.schoolImportance * (busRange / neighborhoods[n].schoolDist);
+                } else {
+                    neighborhoods[n].schoolScore = 5;
+                }
+                if (neighborhoods[n].schoolScore > 5) neighborhoods[n].schoolScore = 5;
 
             if (libraryWalk === 0){
                 neighborhoods[n].libScore = user.sliderData.libImportance * (walkRange / neighborhoods[n].libDist);
@@ -510,17 +508,50 @@ function setup() {
                 neighborhoods[n].mgScore = 5;
             }
             if (neighborhoods[n].mgScore > 5) neighborhoods[n].mgScore = 5;
+              
+                if (golfWalk === 0) {
+                    neighborhoods[n].gcScore = user.sliderData.gcImportance * (walkRange / neighborhoods[n].gcDist);
+                } else if (golfWalk === 1) {
+                    neighborhoods[n].gcScore = user.sliderData.gcImportance * (bikeRange / neighborhoods[n].gcDist);
+                } else if (golfWalk === 2) {
+                    neighborhoods[n].gcScore = user.sliderData.gcImportance * (busRange / neighborhoods[n].gcDist);
+                } else {
+                    neighborhoods[n].gcScore = 5;
+                }
+                if (neighborhoods[n].gcScore > 5) neighborhoods[n].gcScore = 5;
 
+                if (groceryWalk === 0) {
+                    neighborhoods[n].groceryScore = user.sliderData.groceryImportance * (walkRange / neighborhoods[n].groceryDist);
+                } else if (groceryWalk === 1) {
+                    neighborhoods[n].groceryScore = user.sliderData.groceryImportance * (bikeRange / neighborhoods[n].groceryDist);
+                } else if (groceryWalk === 2) {
+                    neighborhoods[n].groceryScore = user.sliderData.groceryImportance * (busRange / neighborhoods[n].groceryDist);
+                } else {
+                    neighborhoods[n].groceryScore = 5;
+                }
+                if (neighborhoods[n].groceryScore > 5) neighborhoods[n].groceryScore = 5;
 
+                if (recreationWalk === 0) {
+                    neighborhoods[n].recScore = user.sliderData.recImportance * (walkRange / neighborhoods[n].recDist);
+                } else if (recreationWalk === 1) {
+                    neighborhoods[n].recScore = user.sliderData.recImportance * (bikeRange / neighborhoods[n].recDist);
+                } else if (recreationWalk === 2) {
+                    neighborhoods[n].recScore = user.sliderData.recImportance * (busRange / neighborhoods[n].recDist);
+                } else {
+                    neighborhoods[n].recScore = 5;
+                }
+                if (neighborhoods[n].recScore > 5) neighborhoods[n].recScore = 5;
 
-
-            neighborhoods[n].mgScore = museumWalk * (6 - user.sliderData.mgImportance / neighborhoods[n].mgDist);
-            neighborhoods[n].gcScore = golfWalk * (6 - user.sliderData.gcImportance / neighborhoods[n].gcDist);
-            neighborhoods[n].groceryScore = groceryWalk * (6 - user.sliderData.groceryImportance / neighborhoods[n].groceryDist);
-            neighborhoods[n].recScore = recreationWalk * (6 - user.sliderData.recImportance / neighborhoods[n].recDist);
-            neighborhoods[n].comScore = mallWalk * (6 - user.sliderData.comImportance / neighborhoods[n].comDist);
-            neighborhoods[n].restScore = restWalk * (6 - user.sliderData.restImportance / neighborhoods[n].restDist);
-
+                if (restWalk === 0) {
+                    neighborhoods[n].restScore = user.sliderData.restImportance * (walkRange / neighborhoods[n].restDist);
+                } else if (restWalk === 1) {
+                    neighborhoods[n].restScore = user.sliderData.restImportance * (bikeRange / neighborhoods[n].restDist);
+                } else if (restWalk === 2) {
+                    neighborhoods[n].restScore = user.sliderData.restImportance * (busRange / neighborhoods[n].restDist);
+                } else {
+                    neighborhoods[n].restScore = 5;
+                }
+                if (neighborhoods[n].restScore > 5) neighborhoods[n].restScore = 5;
 
                 neighborhoods[n].score = (neighborhoods[n].houseScore +
                     neighborhoods[n].parkScore +
