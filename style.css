@@ -196,6 +196,7 @@ body {
     width: 37.2%;
     height: 95%;
     transition: all 30ms linear;
+    overflow-y: auto;
 }
 
 #recreationmenu.active {
@@ -303,10 +304,10 @@ body {
     font-size: 15px;
     -webkit-user-select: none;
     -moz-user-select: none;
-    -ms-user-select: none; 
+    -ms-user-select: none;
     user-select: none;
 }
-   
+
 /* Create a custom radio button */
 .checkmark {
     position: absolute;
@@ -316,7 +317,7 @@ body {
     width: 25px;
     background-color: #eee;
 }
-  
+
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
     background-color: #ccc;
@@ -326,7 +327,7 @@ body {
 .container input:checked ~ .checkmark {
     background-color: #312F2F;
 }
-  
+
 /* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
     content: "";
@@ -338,7 +339,7 @@ body {
 .container input:checked ~ .checkmark:after {
     display: block;
 }
-  
+
 /* Style the indicator (dot/circle) */
 .container .checkmark:after {
     left: 9px;
@@ -351,7 +352,6 @@ body {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-
 .dropbtn {
     background-color: white;
     color: #818181;
