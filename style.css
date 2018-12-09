@@ -30,6 +30,14 @@ body {
     letter-spacing: 1px;
 }
 
+#map {
+    position: fixed;
+    left: 44.2%;
+    background-color: black;
+    height: 95%;
+    width: 55.8%;
+}
+
 #sidebar {
     position: fixed;
     float: left;
@@ -44,7 +52,10 @@ body {
 #sidebar div{
     height: 15.83%;
     box-sizing: border-box;
-    box-shadow: 0px 3px 5px #312F2F;
+    border-right: 1px solid #312F2F;
+
+    /* box-shadow: -4px 1px 5px #312F2F;
+    -webkit-box-shadow: 0 */
 }
 
 #sidebar p {
@@ -60,39 +71,77 @@ body {
 
 #pMenuContainer:hover {
     background-color: #84DCCF;
+    border-right: none;
 }
 
 #pMenuContainer.active {
     background-color: #84DCCF;
+    border-right: none;
 }
 
 #personalprofile {
     z-index: 1;
-    position: fixed;
-    left: -30.2%;
+    position: absolute;
+    left: 7%;
     background-color: #84DCCF;
     width: 37.2%;
     height: 95%;
-    transition: all 30ms linear;
+    /* transition: all 100ms linear; */
 }
 
 #personalprofile.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2;
+}
+
+.slidecontainer {
+    position: absolute;
+    left: 20%;
+    width: 70%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 25%;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s; 
+}
+
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    border-radius: 100%;
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
 }
 
 #housingContainer:hover {
     background-color: #98D9C2;
+    border-right: none;
+
 }
 
 #housingContainer.active {
     background-color: #98D9C2;
+    border-right: none;
 }
 
 #housingmenu {
+    position: absolute;
     z-index: 1;
     position: fixed;
-    left: -30.2%;
+    left: 7%;
     background-color: #98D9C2;
     width: 37.2%;
     height: 95%;
@@ -100,98 +149,105 @@ body {
 }
 
 #housingmenu.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2;
 }
 
 #recreationContainer:hover {
-    background-color: #98D9C2;
+    background-color: #ABEDC6;
+    border-right: none;
 }
 
 #recreationContainer.active {
-    background-color: #98D9C2;
+    background-color: #ABEDC6;
+    border-right: none;
 }
 
 #recreationmenu {
     z-index: 1;
     position: fixed;
-    left: -30.2%;
-    background-color: #98D9C2;
+    left: 7%;
+    background-color: #ABEDC6;
     width: 37.2%;
     height: 95%;
     transition: all 30ms linear;
 }
 
 #recreationmenu.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2
 }
 
 #commercialContainer:hover {
-    background-color: #98D9C2;
+    background-color: #B9FFB7;
+    border-right: none;
 }
 
 #commercialContainer.active {
-    background-color: #98D9C2;
+    background-color: #B9FFB7;
+    border-right: none;
 }
 
 #commercialmenu {
     z-index: 1;
     position: fixed;
-    left: -30.2%;
-    background-color: #98D9C2;
+    left: 7%;
+    background-color: #B9FFB7;
     width: 37.2%;
     height: 95%;
     transition: all 30ms linear;
 }
 
 #commercialmenu.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2;
 }
 
 #foodContainer:hover {
-    background-color: #98D9C2;
+    background-color: #D0FFB7;    
+    border-right: none;
+
 }
 
 #foodContainer.active {
-    background-color: #98D9C2;
+    background-color: #D0FFB7;
+    border-right: none;
+
 }
 
 #foodmenu {
     z-index: 1;
     position: fixed;
-    left: -30.2%;
-    background-color: #98D9C2;
+    left: 7%;
+    background-color: #D0FFB7;
     width: 37.2%;
     height: 95%;
     transition: all 30ms linear;
 }
 
 #foodmenu.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2;
 }
 
 #transportContainer:hover {
-    background-color: #98D9C2;
+    background-color: #E4FFAA;
+    border-right: none;
+
 }
 
 #transportContainer.active {
-    background-color: #98D9C2;
+    background-color: #E4FFAA;
+    border-right: none;
+
 }
 
 #transportmenu {
     z-index: 1;
     position: fixed;
-    left: -30.2%;
-    background-color: #98D9C2;
+    left: 7%;
+    background-color: #E4FFAA;
     width: 37.2%;
     height: 95%;
     transition: all 30ms linear;
 }
 
 #transportmenu.active {
-    z-index: 1;
-    left: 7%;
+    z-index: 2;
 }
