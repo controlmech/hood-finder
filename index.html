@@ -1,15 +1,116 @@
 <!DOCTYPE html>
     <head>
-        <title>15 Neighbourhoods</title>
+        <title>237 Hoods</title>
+        <script src="geoxml3.js"></script>
+        <script src="main.js"></script>
+        <script src="transitions.js"></script>
         <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
     <body>
-        <div id="map">
-        </div>
-        <div id="info">
+        <h1 id = "mainheader">HOOD237</h1>
+        <div id = "sidebar">
+            <div id="pMenuContainer" onclick="togglePMenu()">
+                <p>Personal Profile</p>
+            </div>
+            <div id="housingContainer" onclick="toggleHMenu()">
+                <p>Housing</p>
+            </div>
+            <div id="recreationContainer" onclick="toggleRMenu()">
+                <p>Recreation</p>
+            </div>
+            <div id="commercialContainer" onclick="toggleCMenu()">
+                <p>Commercial</p>
+            </div>
+            <div id="foodContainer" onclick="toggleFMenu()">
+                <p>Food</p>
+            </div>
+            <div id="transportContainer" onclick="toggleTMenu()">
+                <p>Transport</p>
+            </div>
         </div>
 
-        <script src="geoxml3.js"></script>
+        <div id = "map">
+
+        </div>
+
+        <div id = "personalprofile">
+            <p>personal profile</p>
+        </div>
+      
+        <div id = "housingmenu">
+            <p>housing menu</p>
+            <div class = "slidecontainer">
+                <input type="range" min="1" max="5" value="3 " class="slider" id="housePrice">
+            </div>
+            <br />
+            <br />
+            <br />  
+            <div class = "slidecontainer">
+                 <input type="range" min="1" max="5" value="3 " class="slider" id="houseImportance">
+            </div>  
+        </div>
+
+        <div id = "recreationmenu">
+            <p>
+                recreation menu
+            </p>
+
+            <div class = "slidecontainer">
+                <input type="range" min="1" max="5" value="3 " class="slider" id="recDist">
+            </div>
+            <br />
+            <br />
+            <br />  
+            <div class = "slidecontainer">
+                 <input type="range" min="1" max="5" value="3 " class="slider" id="recImportance">
+            </div>   
+        </div>
+
+        <div id = "commercialmenu">
+            <p>commercial menu</p>
+            <div class = "slidecontainer">
+                <input type="range" min="1" max="5" value="3 " class="slider" id="comDist">
+            </div>
+            <br />
+            <br />
+            <br />  
+            <div class = "slidecontainer">
+                 <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance">
+            </div>
+            <br />
+            <br />
+            <br />  
+            <div class = "slidecontainer">
+                <input type="range" min="1" max="5" value="3 " class="slider" id="entDist">
+            </div>
+            <br />
+            <br />
+            <br />  
+            <div class = "slidecontainer">
+                 <input type="range" min="1" max="5" value="3 " class="slider" id="entImportance">
+            </div>
+
+        </div>
+
+        <div id = "foodmenu">
+            <p>food menu</p>
+            <div class = "slidecontainer">
+                <input type="range" min="1" max="5" value="3 " class="slider" id="restDist">
+            </div>
+            <br />
+            <br />
+            <br />  
+            <div class = "slidecontainer">
+                 <input type="range" min="1" max="5" value="3 " class="slider" id="restImportance">
+            </div>
+        </div>
+
+        <div id = "transportmenu">
+            <p>transport menu</p>
+            
+            </div>
+        </div>
         <script>
             var src = "https://opendata.arcgis.com/datasets/f80de78b8abc4d08b3ef46cd4cc7f629_8.kml";
             var debug;
