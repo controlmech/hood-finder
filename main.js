@@ -292,7 +292,7 @@ function Profile(age, occupation, ethnicity, familySize, income, residentStatus)
     this.residentStatus = residentStatus;
 }
 
-function SliderData(housePrice,houseImportance,recDist,recImportance,comDist,comImportance,entDist,entImportance,
+function SliderData(housePrice,houseImportance,recDist,recImportance,comDist,comImportance,eduDist,eduImportance,
      restDist,restImportance){
     this.housePrice = housePrice;
     this.houseImportance = houseImportance;
@@ -300,18 +300,18 @@ function SliderData(housePrice,houseImportance,recDist,recImportance,comDist,com
     this.recImportance = recImportance;
     this.comDist = comDist;
     this.comImportance = comImportance;
-    this.entDist = entDist;
-    this.entImportance = entImportance;
+    this.eduDist = eduDist;
+    this.eduImportance = eduImportance;
     this.restDist = restDist;
     this.restImportance = restImportance;
 }
 
-function NeighborhoodData(housePrice, recDist, comDist, restDist, entDist, name){
+function NeighborhoodData(housePrice, recDist, comDist, restDist, eduDist, name){
     this.housePrice = housePrice;
     this.recDist = recDist;
     this.comDist = comDist;
     this.restDist = restDist;
-    this.entDist = entDist;
+    this.eduDist = eduDist;
     this.name = name;
     var score = 0;
     var houseScore = 0;
@@ -324,9 +324,19 @@ function NeighborhoodData(housePrice, recDist, comDist, restDist, entDist, name)
 // Make every neighborhood
 var neighborhoods = [];
 
+var housePrice = [];
+var recDist = [];
+var comDist = [];
+var restDist = [];
+var entDist = [];
+
 for (i = 0; i < 237; i++){
     // Construct data for each neighborhood in here
-    var neighborhood = NeighborhoodData(0,recDist,comDist,restDist,entDist,name);
+    recDist[i] = (recDistances[i] + parkDistances[i] + golfDistances[i] + waterfallDistances[i])/4;
+    comDist[i] = (museumDistances[i] + mallDistances[i])/2;
+    restDist[i] = (foodDistances[i] + restaurantDistances[i])/2;
+    entDist[i] = ();
+    var neighborhood = NeighborhoodData(housePrice[i],recDist[i],comDist[i],restDist[i],eduDist[i],name);
     neighborhoods.push(neighborhood);
 }
 
@@ -338,8 +348,8 @@ user.sliderData = new SliderData(document.getElementById("housePrice").value,
                                 document.getElementById("recImportance").value,
                                 document.getElementById("comDist").value,
                                 document.getElementById("comImportance").value,
-                                document.getElementById("entDist").value,
-                                document.getElementById("entImportance").value,
+                                document.getElementById("eduDist").value,
+                                document.getElementById("eduImportance").value,
                                 document.getElementById("restDist").value,
                                 document.getElementById("restImportance").value);
 
@@ -365,12 +375,12 @@ var user = {
                                          * (6-user.SliderData.comImportance/5);
             neighborhoods[n].restScore = (6 - (Math.abs(user.SliderData.restDist - neighborhoods[n].restDist)))
                                          * (6-user.SliderData.restImportance/5);
-            neighborhoods[n].entScore = (6 - (Math.abs(user.SliderData.entDist - neighborhoods[n].entDist)))
-                                         * (6-user.SliderData.entDist/5);
+            neighborhoods[n].eduScore = (6 - (Math.abs(user.SliderData.eduDist - neighborhoods[n].eduDist)))
+                                         * (6-user.SliderData.eduDist/5);
 
             neighborhoods[n].score = (neighborhoods[n].houseScore + neighborhoods[n].recScore +
                                      neighborhoods[n].comScore + neighborhoods[n].restScore +
-                                     neighborhoods[n].entScore) /5;
+                                     neighborhoods[n].eduScore) /5;
             i++;
         }
         neighborhoods.sort(compare);
