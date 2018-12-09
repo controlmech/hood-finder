@@ -12,7 +12,7 @@
     <body>
         <h1 id = "mainheader">HOOD237</h1>
         <div id = "sidebar">
-            <div id="pMenuContainer" onclick="togglePMenu()">
+            <div id="pMenuContainer" onclick="togglePMenu()" class = "active">
                 <p>Personal Profile</p>
             </div>
             <div id="housingContainer" onclick="toggleHMenu()">
@@ -36,80 +36,239 @@
 
         </div>
 
-        <div id = "personalprofile">
-            <p>personal profile</p>
-        </div>
-
-        <div id = "housingmenu">
-            <p>housing menu</p>
-            <div class = "slidecontainer">
-                <input type="range" min="1" max="5" value="3 " class="slider" id="housePrice">
+        <div id="tabformatting">
+            <div id = "personalprofile" class = "active">
+                <p>personal profile</p>
             </div>
-            <br />
-            <br />
-            <br />
-            <div class = "slidecontainer">
-                 <input type="range" min="1" max="5" value="3 " class="slider" id="houseImportance">
-            </div>
-        </div>
-
-        <div id = "recreationmenu">
-            <p>
-                recreation menu
-            </p>
-
-            <div class = "slidecontainer">
-                <input type="range" min="1" max="5" value="3 " class="slider" id="recDist">
-            </div>
-            <br />
-            <br />
-            <br />
-            <div class = "slidecontainer">
-                 <input type="range" min="1" max="5" value="3 " class="slider" id="recImportance">
-            </div>
-        </div>
-
-        <div id = "commercialmenu">
-            <p>commercial menu</p>
-            <div class = "slidecontainer">
-                <input type="range" min="1" max="5" value="3 " class="slider" id="comDist">
-            </div>
-            <br />
-            <br />
-            <br />
-            <div class = "slidecontainer">
-                 <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance">
-            </div>
-            <br />
-            <br />
-            <br />
-            <div class = "slidecontainer">
-                <input type="range" min="1" max="5" value="3 " class="slider" id="entDist">
-            </div>
-            <br />
-            <br />
-            <br />
-            <div class = "slidecontainer">
-                 <input type="range" min="1" max="5" value="3 " class="slider" id="entImportance">
+        
+            <div id = "housingmenu">
+                <p>housing menu</p>
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="housePrice">
+                </div>
+                <br />
+                <br />
+                <br />  
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="houseImportance">
+                </div>  
             </div>
 
-        </div>
-
-        <div id = "foodmenu">
-            <p>food menu</p>
-            <div class = "slidecontainer">
-                <input type="range" min="1" max="5" value="3 " class="slider" id="restDist">
+            <div id = "recreationmenu">
+                <br />
+                <p>How far would you prefer the nearest recreation center to be?</p>
+                <br />
+                <br />
+                <div class="buttons">
+                    <label class="container">Walking Distance
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Biking Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Bussing Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Does not matter
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />  
+                <p>How important is it to have a recreation center at your preferred amount of distance?</p>
+                <br />
+                <br />
+                <br />   
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="recImportance">
+                </div>
+                <br />
+                <br />
+                <br />
+                <p>How far would you prefer the nearest park to be?</p>
+                <br />
+                <br />
+                <div class="buttons">
+                    <label class="container">Walking Distance
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Biking Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Bussing Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Does not matter
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />  
+                <p>How important is it to have a park at your preferred amount of distance?</p>
+                <br />
+                <br />
+                <br />   
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="parkImportance">
+                </div>
+                <br />
+                <br />
+                <br />
+                <p>How far would you prefer the golf course to be?</p>
+                <br />
+                <br />
+                <div class="buttons">
+                    <label class="container">Walking Distance
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Biking Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Bussing Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Does not matter
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />  
+                <p>How important is it to have a golf course at your preferred amount of distance?</p>
+                <br />
+                <br />
+                <br />   
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="gcImportance">
+                </div>
             </div>
-            <br />
-            <br />
-            <br />
-            <div class = "slidecontainer">
-                 <input type="range" min="1" max="5" value="3 " class="slider" id="restImportance">
-            </div>
-        </div>
 
-        <div id = "transportmenu">
-            <p>transport menu</p>
+            <div id = "commercialmenu">
+                <br />
+                <p>How far would you prefer a shopping mall or plaza to be?</p>
+                <br />
+                <br />
+                <div class="buttons">
+                    <label class="container">Walking Distance
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Biking Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Bussing Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Does not matter
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />  
+                <p>How important is it to have a shopping mall or plaza at your preferred amount of distance?</p>
+                <br />
+                <br />
+                <br />   
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance">
+                </div>
+                <br />
+                <br />
+                <br />
+                <p>How far would you prefer a museum or a gallery to be?</p>
+                <br />
+                <br />
+                <div class="buttons">
+                    <label class="container">Walking Distance
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Biking Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Bussing Distance
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Does not matter
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />  
+                <p>How important is it to have a museum or gallery at your preferred amount of distance?</p>
+                <br />
+                <br />
+                <br />   
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="mgImportance">
+                </div>
+                <!-- <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="comDist">
+                </div>
+                <br />
+                <br />
+                <br />  
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="comImportance">
+                </div>
+                <br />
+                <br />
+                <br />  
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="entDist">
+                </div>
+                <br />
+                <br />
+                <br />  
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="entImportance">
+                </div> -->
+
+            </div>
+            <div id = "foodmenu">
+                <p>food menu</p>
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="restDist">
+                </div>
+                <br />
+                <br />
+                <br />  
+                <div class = "slidecontainer">
+                    <input type="range" min="1" max="5" value="3 " class="slider" id="restImportance">
+                </div>
+            </div>
+
+            <div id = "transportmenu">
+                <p>transport menu</p>
+                
+                </div>
 
             </div>
         </div>
