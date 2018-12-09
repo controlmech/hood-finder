@@ -12,7 +12,12 @@ var links = ['https://opendata.arcgis.com/datasets/4f1b554e743b423f9574e7a3ca814
             'https://opendata.arcgis.com/datasets/3669f2701ec64e36b4fa8b524c0e5075_8.geojson',
             'https://opendata.arcgis.com/datasets/7208e686d19d4c13a2e3325de61060da_5.geojson',
             'https://opendata.arcgis.com/datasets/544170b5b1be435592b1aea014265c7d_7.geojson',
-            'https://opendata.arcgis.com/datasets/8334940386d844edbb13089e7e77af7c_1.geojson'];
+            'https://opendata.arcgis.com/datasets/8334940386d844edbb13089e7e77af7c_1.geojson',
+            'https://opendata.arcgis.com/datasets/d56d996d4725499da2a5555aa5e5b651_5.geojson',
+            'https://opendata.arcgis.com/datasets/a5867b5375544ceb8f06544a5ed349a5_15.geojson',
+            'https://opendata.arcgis.com/datasets/cccae6f029334927856da6e20a50561f_19.geojson',
+            'https://opendata.arcgis.com/datasets/715c85740bc84c1b90a3a9f5ae1d2f96_16.geojson',
+            ];
 
 var parksData = [];
 var recreationGeo = [];
