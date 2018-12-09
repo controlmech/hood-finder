@@ -67,6 +67,30 @@ body {
     color: #818181;
 }
 
+#pMenuContainer:hover {
+    background-color: #84DCCF;
+    border-right: none;
+}
+
+#pMenuContainer.active {
+    background-color: #84DCCF;
+    border-right: none;
+}
+
+#personalprofile {
+    z-index: 1;
+    position: fixed;
+    left: 7%;
+    background-color: #84DCCF;
+    width: 37.2%;
+    height: 95%;
+    /* transition: all 100ms linear; */
+}
+
+#personalprofile.active {
+    z-index: 2;
+}
+
 .slidecontainer {
     position: absolute;
     display: block;
@@ -84,7 +108,7 @@ body {
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
-    transition: opacity .2s; 
+    transition: opacity .2s;
 }
 
 .slider:hover {
@@ -200,7 +224,7 @@ body {
 }
 
 #foodContainer:hover {
-    background-color: #D0FFB7;    
+    background-color: #D0FFB7;
     border-right: none;
 
 }

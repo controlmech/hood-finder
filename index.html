@@ -2,8 +2,10 @@
     <head>
         <title>237 Hoods</title>
         <script src="geoxml3.js"></script>
-        <script src="main.js"></script>
         <script src="transitions.js"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+        <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+        <script src="main.js"></script>
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
@@ -250,7 +252,6 @@
                 </div> -->
 
             </div>
-
             <div id = "foodmenu">
                 <p>food menu</p>
                 <div class = "slidecontainer">
@@ -268,13 +269,13 @@
                 <p>transport menu</p>
                 
                 </div>
+
             </div>
         </div>
         <script>
             var src = "https://opendata.arcgis.com/datasets/f80de78b8abc4d08b3ef46cd4cc7f629_8.kml";
             var debug;
             var doc;
-            var kmlLayer;
             var x = new XMLHttpRequest();
             x.open("GET", src, true);
             x.onreadystatechange = function () {
@@ -303,7 +304,6 @@
                         lng: -79.8711
                     }
                 });
-
                 var parser = new geoXML3.parser({
                     map: map
                 });
