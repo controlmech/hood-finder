@@ -40,16 +40,28 @@ for (var i = 0; i < links.length; i++){
     WebAuthentication;
 }
 
-var neighborhoods = []
-    function Profile(name, age, occupation, ethnicity, familySize, income, residentStatus){
-        this.name = name;
-        this.name = age;
-        this.occupation = occupation;
-        this.ethnicity = ethnicity;
-        this.familySize = familySize;
-        this.income = income;
-        this.residentStatus = residentStatus;
+function distance(list, point1){
+    point2 = [0,0]; // average points from list
+    for (i = 0; i < list.length; i++){
+        point2[0] += list[i][0];
+        point2[1] += list[i][1];
     }
+    point2[0] /= list.length;
+    point2[1] /= list.length;
+
+    var distance = Math.sqrt((Math.pow(point2[0] - point1[0], 2)) + (Math.pow(point2[1] - point1[1], 2)));
+}
+
+var neighborhoods = []
+function Profile(name, age, occupation, ethnicity, familySize, income, residentStatus){
+    this.name = name;
+    this.name = age;
+    this.occupation = occupation;
+    this.ethnicity = ethnicity;
+    this.familySize = familySize;
+    this.income = income;
+    this.residentStatus = residentStatus;
+}
 
 function SliderData(housing, recreation, commercial, food, transport){
     this.housing = housing;
@@ -70,10 +82,25 @@ function NeighborhoodData(housing, recreation, commercial, food, transport, name
 }
 
 // Make every neighborhood
-var neighborhood1 = NeighborhoodData(1,2,3,4,5,"somewhere");
-var neighborhood2 = NeighborhoodData(3,2,2,4,1,"somewhereelse");
+var neighborhoods = [];
+var housing;
+var recreation;
+var commercial;
+var food;
+var transport;
+var name;
 
-var neighborhoods = [neighborhood1, neighborhood2];
+for (i = 0; i < 237; i++){
+    housing = ;
+    recreation = ;
+    commercial = ;
+    food = ;
+    transport = ;
+    name = ;
+
+    var neighborhood = NeighborhoodData(housing,recreation,commercial,food,transport,name);
+    neighborhoods.push(neighborhood);
+}
 
 // Make objects for user data in the user object 
 user.profile = new Profile(name, age, occupation, ethnicity, familySize, income, residentStatus);
